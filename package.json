@@ -14,12 +14,36 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "@babel/core": "^7.12.10",
+    "@emotion/react": "^11.1.4",
+    "@typescript-eslint/eslint-plugin": "^4.11.0",
+    "babel-plugin-styled-components": "^1.12.0",
     "gatsby": "^2.26.1",
+    "gatsby-cli": "^2.16.2",
+    "gatsby-plugin-emotion": "^5.1.0",
+    "gatsby-plugin-styled-components": "^3.7.0",
+    "gatsby-plugin-typescript": "^2.9.0",
+    "gatsby-plugin-typography": "^2.9.0",
+    "gatsby-source-filesystem": "^2.8.1",
+    "gatsby-transformer-remark": "^2.13.1",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-typography": "^0.16.19",
+    "styled-components": "^5.2.1",
+    "typography": "^0.16.19",
+    "typography-theme-fairy-gates": "^0.16.19",
+    "typography-theme-kirkham": "^0.16.19"
   },
   "devDependencies": {
-    "prettier": "2.2.1"
+    "@types/styled-components": "^5.1.7",
+    "@typescript-eslint/parser": "^4.11.0",
+    "eslint": "^7.16.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "2.2.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
   },
   "repository": {
     "type": "git",
