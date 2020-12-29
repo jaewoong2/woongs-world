@@ -5,7 +5,7 @@
  */
 module.exports = {
   siteMetadata: {
-    title: "Pandas Eating Lots",
+    title: "@JaeWoong2",
   },
   /* Your site config here */
   plugins: [
@@ -25,6 +25,30 @@ module.exports = {
       options: {
         pathToConfigModule: "src/utils/typography"
       }
-    }
+    },
+    `gatsby-plugin-fontawesome-css`,
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `limelight`,
+          `source sans pro\:300,400,400i,700` // you can also specify font weights and styles
+        ],
+        display: 'swap'
+      }
+    },
+    {
+      resolve: `gatsby-transformer-sharp`,
+      options: {
+        // The option defaults to true
+        checkSupportedExtensions: false,
+      },
+    },
+      {
+        resolve: `gatsby-plugin-sharp`,
+        options: {
+        },
+      },
+      `gatsby-plugin-image`,
   ],
 }

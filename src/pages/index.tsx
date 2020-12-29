@@ -42,7 +42,6 @@ const Container = styled.div`
   .post-date {
     color: #555;
   }
-
 `
 
 const Title = styled.h1`
@@ -56,7 +55,7 @@ export default function Home({ data } : indexPageProps) {
     <Layout>
       <Container>
         <Title>
-          Amazing Pandas Eating Things
+          @Jaewoong2
         </Title>
         <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
         {data.allMarkdownRemark.edges.map(({ node }: { node : nodeTypes}) => (

@@ -30,7 +30,7 @@ const Layout: React.FC = ({ children }) => {
     <Container>
       <Link to={`/`}>
         <h3 className="title">
-          Pandas Eating Lots
+          -Jaewoong2
         </h3>
       </Link>
       <Link
