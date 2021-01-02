@@ -1,8 +1,12 @@
 import { keyframes } from "styled-components"
 import { graphql, PageProps } from "gatsby"
-import React from "react"
+import React, { useRef } from "react"
 import styled from "styled-components"
 import Layout from "../components/layout"
+import { FiGithub } from "react-icons/fi"
+import { BsFilePost } from "react-icons/bs"
+import { loadAnimation } from "../components/style/global-theme"
+import MyImageSlide from "../components/MyImageSlide"
 
 interface AboutPageProps extends PageProps {
   data: {
@@ -26,7 +30,7 @@ const SectionTechStack = styled.section`
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-  margin-top: 10px;
+  margin-top: 25px;
 
   .stack {
     position: relative;
@@ -85,19 +89,19 @@ const SectionTechStack = styled.section`
   } 
 `
 
-const LibrarySection = styled.section`
+const Contact = styled.section`
   width: 100%;
   display: flex;
   margin-top : 15px;
   margin-left: 10px;
   flex-direction: column;
-  
-  .library-container {
+  .contact-icon {
+    color: inherit;
+    text-decoration: none;
+    margin-bottom: 10px;
     width: 100%;
     display: flex;
-    span {
-      margin-left: 10px;
-    }
+    align-items: center
   }
 `
 
@@ -105,30 +109,38 @@ const Article = styled.article`
   display: flex;
   width: 100%;
   align-items: center;
-  /* box-shadow: 3px 3px 4px rgba(102, 209, 182, 0.25), 
-  -3px -3px 4px rgba(102, 209, 182, 0.25); */
   border-radius: 30px;
   
   .my-img {
     border-radius: 30px;
-    width: 40%;
+    width: 35%;
+    max-width: 400px;
+    min-width: 150px;
     height: auto;
     margin: 0;
     padding: 0;
+    box-shadow: 1px 1px 5px ${({ theme }) => theme.color.dark}, -1px -1px 5px ${({ theme }) => theme.color.dark};
+    animation: ${loadAnimation} 0.5s linear;
   }
 
   .introduce-section {
+    width: 65%;
     margin-left: 15px;
     margin-right: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     font-size: 0.9em;
     span {
+      animation: ${loadAnimation} 0.5s linear;
       padding: 6px;
     }
   }
+`
 
+const IntroduceOneLine = styled.div`
+  width: 100%;
+  margin-top: 25px;
+  text-align: center;
 `
 
 
@@ -137,41 +149,44 @@ export default function About({ data } : AboutPageProps) {
     <Layout>
       <Article>
         <img className="my-img" src={data.fileName.childImageSharp.fluid.src} />
-        <section className="introduce-section">
-          <span>이름 - 임재웅</span>
-          <span>생년월일 - 1995년 12월 1일</span>
-          <span>학력 - 숭실대학교 전자정보공학부</span>
+        <section className="introduce-section text">
+          <span>- 임재웅</span>
+          <span>- 1995년 12월 1일</span>
+          <span>- 숭실대학교 전자정보공학부</span>
           <span>
-            자기소개 - 
+            - 개발:
             <span>
-            2019년 4월 군전역후, 개발공부에 흥미가 생겼습니다.
-            User Interface를 만드는 프론트 엔드 개발에 꽂혀 시간을 짬내며
-            개발공부를 하고 있습니다.
+              2019/12 ~ 
             </span>
           </span>
+          <Contact>
+            <a className="contact-icon text" href="https://github.com/jaewoong2" target="_blank">
+              <FiGithub size="42" /> https://github.com/jaewoong2
+            </a>
+            <a className="contact-icon text" href="https://velog.io/@jwisgenius" target="_blank">
+              <BsFilePost size="42" /> https://velog.io/@jwisgenius
+            </a>
+          </Contact>
         </section>
       </Article>
       <SectionTechStack>
-        <span className="stack cpp">
+        <span className="stack cpp text">
           C++
         </span>
-        <span className="stack cs">C#</span>
-        <span className="stack py">Python</span>
-        <span className="stack js">
+        <span className="stack cs text">C#</span>
+        <span className="stack py text">Python</span>
+        <span className="stack js text">
           ECMA2020
           </span>
-        <span className="stack ts">TypeScript</span>
-        <span className="stack react">Recat Hooks</span>
-        <span className="stack node">NodeJS</span>
+        <span className="stack ts text">TypeScript</span>
+        <span className="stack react text">Recat Hooks</span>
+        <span className="stack node text">NodeJS</span>
       </SectionTechStack>
-        <LibrarySection>
-      라이브러리 -
-          <div className="library-container">
-            <span>Redux</span>
-            <span>/</span>
-            <span>Recoil</span>
-          </div>
-        </LibrarySection>
+      <IntroduceOneLine className="text">
+        <span>
+          저는 친절한 사람입니다. 프론트엔드 개발자가 되어, 친절한 UI를 개발하고 싶습니다.
+        </span>
+      </IntroduceOneLine>
     </Layout>
   )
 }

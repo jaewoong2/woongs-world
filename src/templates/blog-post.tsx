@@ -20,8 +20,8 @@ export default function BlogPost() {
   return (
     <Layout>
       <div>
-        <h1>{post.frontmatter.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <h1 className="text">{post.frontmatter.title}</h1>
+        <div className="text" dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
     </Layout>
   )

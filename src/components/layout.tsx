@@ -1,46 +1,123 @@
-import React from "react"
-import { css } from "@emotion/react"
-import { graphql, Link, useStaticQuery } from "gatsby"
-import { rhythm } from "../utils/typography"
+import React, { useCallback, useContext, useEffect } from "react"
+import { Link } from "gatsby"
 import styled from 'styled-components'
-
+import { RiMoonClearFill } from "react-icons/ri"
+import { FaSun } from "react-icons/fa"
+import DarkThemeContext from "./provider"
 const Container = styled.div`
-    margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100vw;
+
+  .nav-container {
+    width: 100%;
+    padding: 10px;
     max-width: 700px;
-    padding: ${rhythm(2)};
-    padding-top: ${rhythm(1.5)};
-
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    .nav-sub {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      .link-about {
+        margin-right: 10px;
+      }
+      .theme-icon {
+        margin-right: 10px;
+        font-size: 1.3em;
+        cursor: pointer;
+      }
+      .moon {
+        filter: drop-shadow(2px 2px 4px rgba(20, 20, 30, 0.4));
+        color: rgba(150, 20, 200, 0.8);
+        &:hover {
+          filter: drop-shadow(2px 2px 4px rgba(20, 20, 30, 0.4)) brightness(1.5);
+          transition: transform 0.5s linear;
+        }
+        transition: transform 0.5s linear;
+      }
+      .sun {
+        filter: drop-shadow(2px 2px 4px rgba(255, 255, 255, 0.5));
+        color: rgba(212, 144, 41, 0.8);
+        &:hover {
+          transform: rotate(180deg);
+          transition: transform 0.5s linear;
+        }
+        transition: transform 0.5s linear;
+      }
+    }
     .title {
-      margin-bottom: ${rhythm(2)};
-      display: inline-block;
-      font-style: normal;
+      letter-spacing: 1px;
+      font-style: italic;
     }
+  }
 
-    .link-about {
-      float: right;
-    }
+  .main {
+    max-width: 700px;
+    width: 100%;
+    padding: 10px;
+  }
 `
 
+const Footer = styled.footer`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  box-shadow: -2px 0px 2px ${({ theme }) => theme.color.dark};
+`
 
 const Layout: React.FC = ({ children }) => {
+  const {isDarkMode, setIsDarkMode} = useContext(DarkThemeContext);
 
-    // nonPage components -> staticQuery
+  const onClickToggle = useCallback(() => {
+    localStorage.setItem("isDarkMode", JSON.stringify({ value : !isDarkMode }));
+    setIsDarkMode(prev => !prev);
+  }, [setIsDarkMode, isDarkMode])
 
+  useEffect(() => {
+    const localStorageDarkItem = localStorage.getItem("isDarkMode");
+    if(localStorageDarkItem) {
+      if(JSON.parse(localStorageDarkItem).value === true) {
+        setIsDarkMode(true)
+      } else {
+        setIsDarkMode(false)
+      }
+    }
+  }, [])
+  
   return (
-    <Container>
-      <Link to={`/`}>
-        <h3 className="title">
-          -Jaewoong2
-        </h3>
-      </Link>
-      <Link
-        to={`/about/`}
-        className="link-about"
-      >
-        About
-      </Link>
-      {children}
-    </Container>
+    <>
+      <Container>
+        <nav className="nav-container">
+          <Link to={`/`}>
+            <h3 className="title text">
+              WOONG
+            </h3>
+          </Link>
+          <div className="nav-sub text">
+            <Link
+              to={`/about/`}
+              className="link-about"
+            >
+              About
+            </Link>
+            {isDarkMode ?
+            <FaSun onClick={onClickToggle} className="sun theme-icon" />
+              :
+            <RiMoonClearFill onClick={onClickToggle} className="moon theme-icon" />}
+          </div>
+        </nav>
+        <main className="main">
+          {children}
+        </main>
+      </Container>
+      <Footer className="footer text">
+        2020 @Jaewoong2
+      </Footer>
+    </>
   )
 }
 
