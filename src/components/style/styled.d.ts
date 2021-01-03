@@ -6,6 +6,7 @@ declare module 'styled-components' {
     color: {
       primary: string;
       dark: string;
+      icon: string;
     }
     props?: any;
   }

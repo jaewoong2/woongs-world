@@ -9,6 +9,12 @@ export const loadAnimation = keyframes`
     }
 `
 
+export const graphAnimation = keyframes`
+  from {
+    width: 0;
+  }
+`
+
 const GlobalStyle = createGlobalStyle`
     * {
         margin: 0;

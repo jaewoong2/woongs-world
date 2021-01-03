@@ -52,6 +52,10 @@ const Container = styled.div`
     .title {
       letter-spacing: 1px;
       font-style: italic;
+
+      .double-o {
+        color: ${({ theme }) => theme.color.icon}
+      }
     }
   }
 
@@ -94,7 +98,7 @@ const Layout: React.FC = ({ children }) => {
         <nav className="nav-container">
           <Link to={`/`}>
             <h3 className="title text">
-              WOONG
+              W<span className="double-o">OO</span>NG
             </h3>
           </Link>
           <div className="nav-sub text">

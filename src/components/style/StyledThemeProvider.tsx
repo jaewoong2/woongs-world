@@ -4,11 +4,17 @@ import DarkThemeContext from '../provider';
 
 const StyledThemeProvider: React.FC = ({ children }) => {
     const { isDarkMode } = useContext(DarkThemeContext);
+    const color = {
+        white: "rgb(250, 250, 250)",
+        black: "rgb(30, 31, 33)",
+        yellow: "rgb(240, 200, 30)"
+    }
 
     const theme: DefaultTheme = useMemo(() => ({
         color: {
-            primary: isDarkMode ? 'rgb(5, 5, 5)' : 'rgb(250, 250, 250)',
-            dark: isDarkMode? 'rgb(250, 250, 250)' : 'rgb(5, 5, 5)',
+            primary: isDarkMode ? color.black : color.white,
+            dark: isDarkMode? color.white : color.black,
+            icon: isDarkMode? color.yellow : color.black,
           },
     }), [isDarkMode]);
     

@@ -5,32 +5,44 @@ import styled from "styled-components"
 import Layout from "../components/layout"
 import { FiGithub } from "react-icons/fi"
 import { BsFilePost } from "react-icons/bs"
-import { loadAnimation } from "../components/style/global-theme"
+import { graphAnimation, loadAnimation } from "../components/style/global-theme"
 import MyImageSlide from "../components/MyImageSlide"
+import AboutMySelf from "../components/AboutMySelf"
 
 interface AboutPageProps extends PageProps {
+  // data: {
+  //   fileName: {
+  //     childImageSharp: {
+  //       fluid: {
+  //         src: string
+  //       }
+  //     }
+  //   }
+  // }
   data: {
-    fileName: {
-      childImageSharp: {
-        fluid: {
-          src: string
+    allImageSharp: {
+      edges : {
+        node:{
+          fluid: {
+            aspectRatio: number,
+            base64: string,
+            sizies: string,
+            src: string,
+            srcSet: string
+          }
+          id: string
         }
-      }
+      }[]
     }
   }
-}
 
-const graphAnimation = keyframes`
-  from {
-    width: 0;
-  }
-`
+}
 
 const SectionTechStack = styled.section`
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-  margin-top: 25px;
+  margin-top: 10px;
 
   .stack {
     position: relative;
@@ -94,45 +106,67 @@ const Contact = styled.section`
   display: flex;
   margin-top : 15px;
   margin-left: 10px;
-  flex-direction: column;
+  
   .contact-icon {
     color: inherit;
     text-decoration: none;
     margin-bottom: 10px;
     width: 100%;
     display: flex;
-    align-items: center
+    align-items: center;
+    margin-top: 15px;
+    color: ${({ theme }) => theme.color.dark};
+
+    svg {
+      color: ${({ theme }) => theme.color.icon};
+      min-width: 24px;
+      min-height: 24px;
+      margin-right: 7px;
+    }
   }
 `
 
 const Article = styled.article`
   display: flex;
   width: 100%;
-  align-items: center;
-  border-radius: 30px;
+  max-height: 100%;  
+  align-items: flex-end;
   
-  .my-img {
-    border-radius: 30px;
+  .my-image-wrapper {
+    display: flex;
+    align-items: center;
     width: 35%;
-    max-width: 400px;
-    min-width: 150px;
-    height: auto;
+    height: 100%;
     margin: 0;
     padding: 0;
-    box-shadow: 1px 1px 5px ${({ theme }) => theme.color.dark}, -1px -1px 5px ${({ theme }) => theme.color.dark};
-    animation: ${loadAnimation} 0.5s linear;
+    max-width: 400px;
+    min-width: 200px;
+
+    .my-image {
+      margin: 0;
+      padding: 0;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+    }
   }
 
   .introduce-section {
-    width: 65%;
-    margin-left: 15px;
-    margin-right: 15px;
-    display: flex;
-    flex-direction: column;
-    font-size: 0.9em;
-    span {
-      animation: ${loadAnimation} 0.5s linear;
-      padding: 6px;
+    width: 100%;
+    max-height: 100%;
+
+    .introduce-wrapper {
+      width: 65%;
+      margin-left: 15px;
+      margin-right: 15px;
+      display: flex;
+      flex-direction: column;
+      font-size: 0.9em;
+      span {
+        animation: ${loadAnimation} 0.5s linear;
+        padding: 6px;
+      }
     }
   }
 `
@@ -144,31 +178,14 @@ const IntroduceOneLine = styled.div`
 `
 
 
+
+
 export default function About({ data } : AboutPageProps) {
+
+
   return (
     <Layout>
-      <Article>
-        <img className="my-img" src={data.fileName.childImageSharp.fluid.src} />
-        <section className="introduce-section text">
-          <span>- 임재웅</span>
-          <span>- 1995년 12월 1일</span>
-          <span>- 숭실대학교 전자정보공학부</span>
-          <span>
-            - 개발:
-            <span>
-              2019/12 ~ 
-            </span>
-          </span>
-          <Contact>
-            <a className="contact-icon text" href="https://github.com/jaewoong2" target="_blank">
-              <FiGithub size="42" /> https://github.com/jaewoong2
-            </a>
-            <a className="contact-icon text" href="https://velog.io/@jwisgenius" target="_blank">
-              <BsFilePost size="42" /> https://velog.io/@jwisgenius
-            </a>
-          </Contact>
-        </section>
-      </Article>
+      <AboutMySelf imageSrc={data.allImageSharp.edges[0].node.fluid.src} />
       <SectionTechStack>
         <span className="stack cpp text">
           C++
@@ -182,23 +199,84 @@ export default function About({ data } : AboutPageProps) {
         <span className="stack react text">Recat Hooks</span>
         <span className="stack node text">NodeJS</span>
       </SectionTechStack>
-      <IntroduceOneLine className="text">
-        <span>
-          저는 친절한 사람입니다. 프론트엔드 개발자가 되어, 친절한 UI를 개발하고 싶습니다.
-        </span>
-      </IntroduceOneLine>
+      <Contact>
+        <a className="contact-icon text" href="https://github.com/jaewoong2" target="_blank">
+            <FiGithub className="icon" size="36px" />
+            https://github.com/jaewoong2
+        </a>
+        <a className="contact-icon text" href="https://velog.io/@jwisgenius" target="_blank">
+          <BsFilePost className="icon" size="36px" /> https://velog.io/@jwisgenius
+        </a>
+      </Contact>
     </Layout>
   )
+
+  // return (
+  //   <Layout>
+  //     <Article>
+  //       <figure className="my-image-wrapper">
+  //         <img className="my-image" src={data.allImageSharp.edges[0].node.fluid.src} />
+  //       </figure>
+  //       <section className="introduce-section text">
+  //         <div className="introduce-wrapper">
+  //           <span>- 임재웅</span>
+  //           <span>- 1995년 12월 1일</span>
+  //           <span>- 숭실대학교 전자정보공학부</span>
+  //           <span>
+  //             - 개발:
+  //             <span>
+  //               2019/12 ~ 
+  //             </span>
+  //           </span>
+
+  //         </div>
+  //       </section>
+  //     </Article>
+  //     <SectionTechStack>
+  //       <span className="stack cpp text">
+  //         C++
+  //       </span>
+  //       <span className="stack cs text">C#</span>
+  //       <span className="stack py text">Python</span>
+  //       <span className="stack js text">
+  //         ECMA2020
+  //         </span>
+  //       <span className="stack ts text">TypeScript</span>
+  //       <span className="stack react text">Recat Hooks</span>
+  //       <span className="stack node text">NodeJS</span>
+  //     </SectionTechStack>
+  //     <IntroduceOneLine className="text">
+  //       <span>
+  //         저는 친절한 사람입니다. 프론트엔드 개발자가 되어, 친절한 UI를 개발하고 싶습니다.
+  //       </span>
+  //     </IntroduceOneLine>
+  //   </Layout>
+  // )
 }
 
 
 // pages 폴더에 있는 것은 이렇게 
+// export const query = graphql`
+//   query {
+//     fileName: file(relativePath: { eq: "images/myimage.jpg" }) {
+//       childImageSharp {
+//         fluid(maxWidth: 1000, maxHeight: 1500) {
+//           ...GatsbyImageSharpFluid
+//         }
+//       }
+//     }
+//   }
+// `
+
 export const query = graphql`
   query {
-    fileName: file(relativePath: { eq: "images/myimage.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1000, maxHeight: 1500) {
-          ...GatsbyImageSharpFluid
+    allImageSharp {
+      edges {
+        node {
+          id
+          fluid(maxWidth: 3000, maxHeight: 3000) {
+            ...GatsbyImageSharpFluid
+          }
         }
       }
     }
