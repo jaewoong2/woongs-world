@@ -1,5 +1,5 @@
-import { createGlobalStyle, keyframes } from "styled-components";
-import React from "react"
+import { createGlobalStyle, keyframes } from 'styled-components';
+import React from 'react';
 export const loadAnimation = keyframes`
     from {
         opacity: 0;
@@ -7,13 +7,13 @@ export const loadAnimation = keyframes`
     to {
         opacity: 1;
     }
-`
+`;
 
 export const graphAnimation = keyframes`
   from {
     width: 0;
   }
-`
+`;
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -36,7 +36,6 @@ const GlobalStyle = createGlobalStyle`
         }
     }
 
-`
+`;
 
-
-export default React.memo(GlobalStyle)
+export default React.memo(GlobalStyle);

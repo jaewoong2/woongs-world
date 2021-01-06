@@ -8,9 +8,10 @@
       "esnext"
     ],
     "strict": true,
+    "noEmit": false,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "allowJs": true
+    "allowJs": true,
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules", "public", ".cache"]
