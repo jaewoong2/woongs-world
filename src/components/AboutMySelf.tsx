@@ -138,7 +138,7 @@ type AboutMySelfProps = {
     imageSrc: string;
 };
 
-const AboutMySelf = ({ imageSrc }: AboutMySelfProps) => {
+const AboutMySelf: React.FC<AboutMySelfProps> = ({ imageSrc }) => {
     const [isClicked, setIsClicked] = useState(false);
 
     useEffect(() => {

@@ -7,16 +7,18 @@ import Layout from '../components/layout';
 import useInput from '../hooks/useInput';
 import { loadAnimation } from '../components/style/global-theme';
 import { BsArrowUpLeft } from 'react-icons/bs';
+import { MdClear } from 'react-icons/md';
+import Recommend from '../components/serach/Recommend';
 
 const Section = styled.section`
     display: flex;
     flex-direction: column;
+    position: relative;
     width: 100%;
     height: 100%;
     min-height: 100vh;
 
     .search-bar-warpper {
-        z-index: 10;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -38,10 +40,12 @@ const Section = styled.section`
                 font-size: 0.9em;
                 color: ${({ theme }) => theme.color.dark};
                 outline: 0;
+                letter-spacing: 1.2px;
                 border: 0px;
                 font-weight: 700;
             }
             .search-icon-wrapper {
+                z-index: 10;
                 width: 52px;
                 display: flex;
                 border-radius: 0 2px 2px 0;
@@ -79,12 +83,14 @@ const Section = styled.section`
         display: flex;
         justify-content: center;
         animation: ${loadAnimation} 0.4s;
+        z-index: 3;
         .searched-value-wrapper {
             overflow-y: scroll;
             width: 80%;
             min-height: 300px;
             max-height: 500px;
-            background-color: inherit;
+            transition: background-color 0.5s;
+            background-color: ${({ theme }) => theme.color.primary};
             border: 1px solid ${({ theme }) => theme.color.border};
             box-shadow: 0 2px 5px 0 ${({ theme }) => theme.color.boxShadow};
             transition: border 0.5s linear;
@@ -118,6 +124,16 @@ const Section = styled.section`
                 }
             }
 
+            .not-searched-value {
+                width: 100%;
+                height: 90%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.2em;
+                font-weight: 300;
+            }
+
             .searched-value {
                 margin-bottom: 0;
                 list-style: none;
@@ -130,10 +146,24 @@ const Section = styled.section`
                 font-size: 1em;
                 cursor: pointer;
                 justify-content: space-between;
+
+                .icons-wrapper {
+                    display: flex;
+
+                    .clear {
+                        &:hover {
+                            transition: font-size 0.2s;
+                            font-size: 1.115em;
+                        }
+                        transition: font-size 0.2s;
+                    }
+                }
+
                 .searched-value-with-icon {
                     width: 100%;
                     display: flex;
                     align-items: center;
+                    letter-spacing: 1.2px;
                 }
                 .icon {
                     margin-right: 5px;
@@ -148,6 +178,13 @@ const Section = styled.section`
             }
         }
     }
+    .recommend-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 54px;
+    }
 `;
 
 type searchedValuesType = {
@@ -157,26 +194,44 @@ type searchedValuesType = {
 
 const Search: React.FC = () => {
     const [placeholder, setPlaceholder] = useState<string>('궁금한 것이 무엇인가요?');
-    const [searchValue, setSearchValue, onChangeSearchValue] = useInput<string | undefined>(undefined);
+    const [searchValue, setSearchValue, onChangeSearchValue] = useInput<string>('');
     const [searchedValues, setSearchedValues] = useState<searchedValuesType>({
         isOpen: false,
         searcehdValues: [],
     });
 
-    const onClickSearch = useCallback(() => {
-        if (searchValue) {
-            setSearchedValues(prev => {
-                const newSearchedValues =
-                    prev.searcehdValues.length > 0 ? [searchValue, ...prev.searcehdValues] : [searchValue];
-                localStorage.setItem('searchedValues', JSON.stringify({ values: newSearchedValues }));
-                return {
-                    ...prev,
-                    searcehdValues: newSearchedValues,
-                };
-            });
-        }
-    }, [searchValue]);
+    const onClickSearch = useCallback(
+        (e?: React.KeyboardEvent<HTMLInputElement>) => {
+            if (e) {
+                if (e?.key === 'Enter' && searchValue) {
+                    setSearchedValues(prev => {
+                        const newSearchedValues =
+                            prev.searcehdValues.length > 0 ? [searchValue, ...prev.searcehdValues] : [searchValue];
+                        localStorage.setItem('searchedValues', JSON.stringify({ values: newSearchedValues }));
+                        return {
+                            ...prev,
+                            searcehdValues: newSearchedValues,
+                        };
+                    });
+                }
+            } else {
+                if (searchValue) {
+                    setSearchedValues(prev => {
+                        const newSearchedValues =
+                            prev.searcehdValues.length > 0 ? [searchValue, ...prev.searcehdValues] : [searchValue];
+                        localStorage.setItem('searchedValues', JSON.stringify({ values: newSearchedValues }));
+                        return {
+                            ...prev,
+                            searcehdValues: newSearchedValues,
+                        };
+                    });
+                }
+            }
+        },
+        [searchValue],
+    );
 
+    /** 로컬스토리지에 있는 searchedValue 값을 가져온다. */
     useEffect(() => {
         const localStorageSearchedValues = localStorage.getItem('searchedValues');
         if (localStorageSearchedValues) {
@@ -228,9 +283,18 @@ const Search: React.FC = () => {
         }
     }, []);
 
-    const onClickClear = useCallback(() => {
+    const onClickClear = useCallback((idx?: number) => {
         localStorage.setItem('searchedValues', JSON.stringify({ values: [] }));
         setSearchedValues(prev => {
+            if (idx === 0 || idx) {
+                const newSearchedValues = [...prev.searcehdValues];
+                newSearchedValues.splice(idx, 1);
+                localStorage.setItem('searchedValues', JSON.stringify({ values: newSearchedValues }));
+                return {
+                    ...prev,
+                    searcehdValues: newSearchedValues,
+                };
+            }
             return {
                 ...prev,
                 searcehdValues: [],
@@ -244,6 +308,8 @@ const Search: React.FC = () => {
                 <div onClick={onClickBlanckArea} className="search-bar-warpper">
                     <div className="search-bar">
                         <input
+                            readOnly={true}
+                            onKeyDown={onClickSearch}
                             onChange={onChangeSearchValue}
                             value={searchValue}
                             placeholder={placeholder}
@@ -253,7 +319,7 @@ const Search: React.FC = () => {
                             onClick={onClickDownBtn}
                             className={`recommend-icon ${searchedValues.isOpen ? 'up' : 'down'}`}
                         />
-                        <div onClick={onClickSearch} className="search-icon-wrapper" aria-label="icon">
+                        <div onClick={() => onClickSearch()} className="search-icon-wrapper" aria-label="icon">
                             <BiSearchAlt className="icon" />
                         </div>
                     </div>
@@ -263,7 +329,7 @@ const Search: React.FC = () => {
                         <div className="searched-value-wrapper">
                             <nav className="searched-value-nav">
                                 <p className="searched-value-recent">최근검색어</p>
-                                <p onClick={onClickClear} className="searched-value-clear">
+                                <p onClick={() => onClickClear()} className="searched-value-clear">
                                     전체삭제
                                 </p>
                             </nav>
@@ -273,12 +339,23 @@ const Search: React.FC = () => {
                                         <IoSearchCircle className="icon" />
                                         {searchedValue}
                                     </div>
-                                    <BsArrowUpLeft className="arrow" />
+                                    <div className="icons-wrapper">
+                                        <BsArrowUpLeft className="arrow" />
+                                        <MdClear onClick={() => onClickClear(idx)} className="clear" />
+                                    </div>
                                 </li>
                             ))}
+                            {searchedValues.searcehdValues.length === 0 && (
+                                <div className="not-searched-value">
+                                    <p>최근에 검색한 것이 없습니다.</p>
+                                </div>
+                            )}
                         </div>
                     </section>
                 )}
+                <div className="recommend-container">
+                    <Recommend setSearchValue={setSearchValue} onClickSearch={onClickSearch} />
+                </div>
             </Section>
         </Layout>
     );
