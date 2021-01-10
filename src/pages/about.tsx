@@ -39,7 +39,7 @@ const SectionTechStack = styled.section`
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 
     .stack {
         position: relative;
@@ -122,55 +122,9 @@ const Contact = styled.section`
     }
 `;
 
-const Article = styled.article`
-    display: flex;
-    width: 100%;
-    max-height: 100%;
-    align-items: flex-end;
-
-    .my-image-wrapper {
-        display: flex;
-        align-items: center;
-        width: 35%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        max-width: 400px;
-        min-width: 200px;
-
-        .my-image {
-            margin: 0;
-            padding: 0;
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-        }
-    }
-
-    .introduce-section {
-        width: 100%;
-        max-height: 100%;
-
-        .introduce-wrapper {
-            width: 65%;
-            margin-left: 15px;
-            margin-right: 15px;
-            display: flex;
-            flex-direction: column;
-            font-size: 0.9em;
-            span {
-                animation: ${loadAnimation} 0.5s linear;
-                padding: 6px;
-            }
-        }
-    }
-`;
-
 const Paragraph = styled.p`
     width: 100%;
     margin-top: 25px;
-    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -183,6 +137,11 @@ const Paragraph = styled.p`
         height: 1.5px;
         background-color: ${({ theme }) => theme.color.dark};
     }
+`;
+
+const Span = styled.span`
+    width: fit-content;
+    height: 1em;
 `;
 
 type myHistoryProps = {
@@ -239,6 +198,7 @@ const About: React.FC<AboutPageProps> = ({ data }) => {
     return (
         <Layout>
             <AboutMySelf myHistory={histories} />
+            <Span className="text">사용빈도-</Span>
             <SectionTechStack>
                 <span className="stack cpp text">C++</span>
                 <span className="stack cs text">C#</span>

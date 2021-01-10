@@ -1,11 +1,9 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import styled, { useTheme } from 'styled-components';
-import { loadAnimation } from './style/global-theme';
 
 const Main = styled.section`
     width: 100%;
-    /* min-height: 70vh; */
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     display: flex;
     align-items: flex-end;
 
