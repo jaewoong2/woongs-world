@@ -7,9 +7,9 @@ module.exports = {
     siteMetadata: {
         title: '@JaeWoong2',
     },
+    pathPrefix: "/woongs-world",
     /* Your site config here */
     plugins: [
-        'gatsby-plugin-emotion',
         `gatsby-plugin-styled-components`,
         {
             resolve: 'gatsby-source-filesystem',

@@ -32,7 +32,7 @@ const Container = styled.div`
             }
             .moon {
                 filter: drop-shadow(2px 2px 4px rgba(20, 20, 30, 0.4));
-                color: ${({ theme }) => theme.color.dark};
+                color: ${({ theme }) => (theme.isDarkMode ? theme.color.white : theme.color.black)};
                 &:hover {
                     filter: drop-shadow(2px 2px 4px rgba(20, 20, 30, 0.4)) brightness(1.5);
                     transition: transform 0.5s linear;
