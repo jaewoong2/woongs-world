@@ -7,7 +7,7 @@ module.exports = {
     siteMetadata: {
         title: '@JaeWoong2',
     },
-    pathPrefix: "/woongs-world",
+    pathPrefix: '/woongs-world',
     /* Your site config here */
     plugins: [
         `gatsby-plugin-styled-components`,

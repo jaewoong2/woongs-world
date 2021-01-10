@@ -64,7 +64,7 @@ const Section = styled.section`
 const initalRecommendValues = [
     {
         list: '포트폴리오',
-        link: '/portfolio',
+        link: '/woongs-world/portfolio',
     },
     {
         list: 'Git Hub @jaewoong2',
@@ -72,7 +72,7 @@ const initalRecommendValues = [
     },
     {
         list: '임재웅은 누구 인가요?',
-        link: '/about',
+        link: '/woongs-world//about',
     },
     {
         list: '프론트 엔드 블로그 추천',
@@ -80,7 +80,7 @@ const initalRecommendValues = [
     },
     {
         list: '학습자료',
-        link: '/blog',
+        link: '/woongs-world/blog',
     },
 ];
 
