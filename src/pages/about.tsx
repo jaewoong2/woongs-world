@@ -182,7 +182,7 @@ const histories: myHistoryProps[] = [
         clarification: '남들과 다른 군입대를 하고 싶었기 때문에, 주위에서 비교적 가지 않은 해군에 입대하였습니다.',
     },
     {
-        date: '2020.11',
+        date: '2019.11',
         description: '휴학 후, 아르바이트를 병행하며 개발공부 시작',
         clarification: '여러사람을 만나며 하고싶은 것에 대해 구체화를 하였고, 결단 끝에 개발공부를 시작하였습니다.',
     },
