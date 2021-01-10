@@ -79,8 +79,8 @@ const initalRecommendValues = [
         link: 'https://velog.io/@jwisgenius',
     },
     {
-        list: '오늘의 날씨',
-        link: '/wheater',
+        list: '학습자료',
+        link: '/blog',
     },
 ];
 

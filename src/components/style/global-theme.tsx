@@ -27,6 +27,11 @@ const GlobalStyle = createGlobalStyle`
     .text {
         color: ${({ theme }) => theme.color.dark};
     }
+
+    a {
+        text-decoration: none;
+        color: ${({ theme }) => theme.color.dark};
+    }
  
     html {
         transition: background-color 0.5s linear, color 0.5s linear;

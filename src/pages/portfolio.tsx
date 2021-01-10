@@ -1,11 +1,9 @@
 import { graphql, PageProps } from 'gatsby';
-import React, { useCallback, useEffect, useState } from 'react';
-import { BiLeftArrowCircle, BiRightArrowCircle } from 'react-icons/bi';
-import { MdClear } from 'react-icons/md';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import Layout from '../components/layout';
-import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons/io';
-import { loadAnimation } from '../components/style/global-theme';
+import PortfolioImage from '../components/PortfolioImage';
+import Description from '../components/Description';
 
 interface PortfolioProps extends PageProps {
     data: {
@@ -26,223 +24,204 @@ interface PortfolioProps extends PageProps {
 const Section = styled.section`
     width: 100%;
     height: 100%;
-    color: ${({ theme }) => theme.color.dark};
-
-    .image-wrapper {
-        width: 80%;
-        display: flex;
-
-        .image-figure {
-            width: 50%;
-            height: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 6px;
-            margin: 0;
-            min-width: 150px;
-            margin-right: 5px;
-            .image {
-                padding: 0;
-                margin: 0px;
-                width: 100%;
-                height: 100%;
-                max-width: 100%;
-                max-height: 100%;
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-        }
-    }
-`;
-
-const ImgArticle = styled.article`
-    z-index: 10;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background-color: rgb(30, 31, 33);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    .clear-icon {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        margin-left: 90%;
-        color: white;
-        cursor: pointer;
+    .canvas,
+    .firebase {
+        margin-top: 30px;
     }
 
-    .image-figure-wrapper {
+    .project-introduce-container {
         width: 100%;
         height: 100%;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        .arrow {
-            color: white;
-            display: flex;
-            height: 100%;
-            align-items: center;
-            font-size: 35px;
-            cursor: pointer;
-        }
-        .left {
-            margin-right: 10px;
-        }
-        .right {
-            margin-left: 10px;
-        }
-
-        .image-figure {
-            width: auto;
-            height: 100%;
-            max-height: auto;
-            max-width: 800px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            user-select: none;
-            .capation {
-                margin-top: 10px;
-                letter-spacing: 3px;
-                color: white;
-            }
-            .image {
-                user-select: none;
-                padding: 0;
-                margin: 0px;
-                width: auto;
-                height: 60%;
-                max-width: 100%;
-                max-height: 100%;
+        justify-content: flex-start;
+        .project-image-section {
+            .description-wrapper {
+                width: 90%;
+                margin-left: 10px;
+                font-size: 0.9em;
+                .description,
+                .review {
+                    position: relative;
+                    display: flex;
+                    word-break: break-all;
+                    line-height: 1.5em;
+                    .first {
+                        font-weight: 400;
+                        font-size: 1.4rem;
+                        height: 1.4rem;
+                    }
+                }
+                .source-code {
+                    &:hover {
+                        color: rgba(100, 81, 207, 0.747);
+                    }
+                    margin-right: 5px;
+                }
             }
         }
     }
 `;
 
-type imageClickedType = {
-    isClicked: boolean;
-    src: string;
-}[];
-
 const Portfolio: React.FC<PortfolioProps> = ({ data }) => {
-    const [imageClicked, setImageClikced] = useState<imageClickedType>();
-    const images = data.allImageSharp.edges
-        .map(edge => edge.node.fluid.originalName.includes('portfolio') && edge.node.fluid.src)
-        .filter(image => !!image);
-    useEffect(() => {
-        images.map(image => {
-            if (image) {
-                setImageClikced(prev => {
-                    if (prev && prev.length > 0) {
-                        return [
-                            ...prev,
-                            {
-                                isClicked: false,
-                                src: image,
-                            },
-                        ];
-                    }
-                    return [
-                        {
-                            isClicked: false,
-                            src: image,
-                        },
-                    ];
-                });
-            }
-        });
+    const images = useMemo(
+        () =>
+            data.allImageSharp.edges
+                .map(edge => edge.node.fluid.originalName.includes('portfolio') && edge.node.fluid.src)
+                .filter(image => !!image),
+        [],
+    );
+
+    const canvasImages = useMemo(() => {
+        return data.allImageSharp.edges
+            .map(edge => (edge.node.fluid.originalName.includes('canvas') ? edge.node.fluid.src : ''))
+            .filter(image => !!image);
     }, []);
 
-    useEffect(() => {
-        console.log(imageClicked);
-    }, [imageClicked]);
-
-    const onClickImage = useCallback(
-        (idx: number) => () => {
-            setImageClikced(prev => {
-                if (prev && prev.length > 0) {
-                    return prev.map((image, index) =>
-                        idx === index ? { ...image, isClicked: true } : { ...image, isClicked: false },
-                    );
-                }
-            });
-        },
-        [],
-    );
-
-    const onClickCancelImage = useCallback(() => {
-        setImageClikced(prev => {
-            return prev?.map(image => (image.isClicked === true ? { ...image, isClicked: false } : image));
-        });
+    const firebaseImages = useMemo(() => {
+        return data.allImageSharp.edges
+            .map(edge => (edge.node.fluid.originalName.includes('firebase') ? edge.node.fluid.src : ''))
+            .filter(image => !!image);
     }, []);
-
-    const onClickRightArrow = useCallback(
-        (index: number) => () => {
-            setImageClikced(prev => {
-                return prev?.map((image, idx: number) => {
-                    if (index + 1 < prev.length) {
-                        return index + 1 === idx ? { ...image, isClicked: true } : { ...image, isClicked: false };
-                    }
-                    return idx === 0 ? { ...image, isClicked: true } : { ...image, isClicked: false };
-                });
-            });
-        },
-        [],
-    );
-
-    const onClickLeftArrow = useCallback(
-        (index: number) => () => {
-            setImageClikced(prev => {
-                return prev?.map((image, idx: number) => {
-                    if (index === 0) {
-                        return prev.length - 1 === idx ? { ...image, isClicked: true } : { ...image, isClicked: false };
-                    }
-                    return idx === index - 1 ? { ...image, isClicked: true } : { ...image, isClicked: false };
-                });
-            });
-        },
-        [],
-    );
 
     return (
         <Layout>
             <Section>
-                <p>개인 프로젝트</p>
-                <article className="image-wrapper">
-                    {images.map((image, idx) => {
-                        if (image) {
-                            return (
-                                <figure key={`image -${idx}`} className="image-figure">
-                                    <img onClick={onClickImage(idx)} className="image" src={image} />
-                                </figure>
-                            );
+                <div className="project-introduce-container">
+                    <PortfolioImage
+                        position="left"
+                        description={
+                            <Description
+                                title="Woongs` Community"
+                                review={
+                                    <span className="description-text">
+                                        <span className="text first">처</span>
+                                        음으로 Node.js 와 DB를 사용하여 재미있었습니다. 하지만, 디자인을 디자인
+                                        라이브러리를 사용하여 만든것이 아쉬웠습니다. 이것저것 구현을 하면서 개발에
+                                        재미를 느끼게 되었습니다.
+                                    </span>
+                                }
+                                description={
+                                    <span className="description-text">
+                                        <span className="text first">게</span>
+                                        시물을 올릴 수 있는 사이트 입니다. 기초적인 글쓰기, 올리기, 삭제하기, 수정하기
+                                        등 학습하기 위하여 만들었고, 추가로 PageNation, Infinity Scroll, HashTag Search
+                                        등 기능 구현 하였습니다.
+                                    </span>
+                                }
+                                techDescription={
+                                    <>
+                                        <div className="front">Front: Next.JS(React), Redux, AntDesign</div>
+                                        <div className="back">Back: NodeJs, MySQL</div>
+                                        <div className="sorcue-code-wrapper">
+                                            <a
+                                                rel="noreferrer"
+                                                className="source-code"
+                                                href="https://github.com/jaewoong2/BolierPlate-2020"
+                                                target="_blank"
+                                            >
+                                                소스코드 /
+                                            </a>
+                                            제작기간 2020.07 ~ 09
+                                        </div>
+                                    </>
+                                }
+                            />
                         }
-                    })}
-                </article>
+                        className="project-image-section"
+                        images={images.map(image => (image ? image : ''))}
+                    />
+                </div>
+                <div className="project-introduce-container canvas">
+                    <PortfolioImage
+                        position="right"
+                        description={
+                            <Description
+                                review={
+                                    <span className="description-text">
+                                        <span className="text first">C</span>
+                                        anvas.js를 공부하기 위해 각종 블로그및 공식문서를 공부하며 만든 것 중, 처음부터
+                                        끝까지 개발한 것들 입니다. 웹앱(블로그, 쇼핑몰 등)과 같이 기능이 구현되는 것을
+                                        만드는것만이 웹개발이 아니라 디자인적으로도 웹 개발을 할 수 있다는 것을 알게 된
+                                        프로젝트 였습니다.
+                                    </span>
+                                }
+                                title="Canvas Series"
+                                description={
+                                    <span className="description-text">
+                                        <span className="text first">라</span>
+                                        이브러리 사용 없이 canvas를 학습하기 위해 만들 었습니다.
+                                    </span>
+                                }
+                                techDescription={
+                                    <>
+                                        <div className="front">Typescript, Canvas</div>
+                                        <div className="sorcue-code-wrapper">
+                                            <a
+                                                rel="noreferrer"
+                                                className="source-code"
+                                                href="https://github.com/jaewoong2/mini-project"
+                                                target="_blank"
+                                            >
+                                                소스코드 /
+                                            </a>
+                                            제작기간 2020.11 ~ 11
+                                        </div>
+                                    </>
+                                }
+                            />
+                        }
+                        className="project-image-section"
+                        images={canvasImages.map(image => (image ? image : ''))}
+                    />
+                </div>
+                <div className="project-introduce-container firebase">
+                    <PortfolioImage
+                        position="left"
+                        description={
+                            <Description
+                                title="일정관리 WEB"
+                                review={
+                                    <span className="description-text">
+                                        <span className="text first">새</span>
+                                        로운 라이브러리를 사용하였지만, firebase 라이브러리에 있는 기능에만 국한되어
+                                        DB등의 사용이 가능한 것이 아쉬웠지만, RecoilJS와 Firebase 를 동시에 사용하는
+                                        자료가 없어 코드구성 및 기능 구현을 혼자 만드는것에 자신감을 붙게 만든 프로젝트
+                                        입니다. 또한, 컴포넌트들을 재사용하는 것에 초점을 두며 개발을 하여 다른 프로젝트
+                                        에도 사용 할 수 있게 만들었습니다.
+                                    </span>
+                                }
+                                description={
+                                    <span className="description-text">
+                                        <span className="text first">해</span>
+                                        보지 못한 라이브러리 학습을 위해 만든 페이지 입니다. Firebase를 이용한 구글
+                                        로그인 구현, Firebase Database를 이용한 DB관리 등을 중점적으로 학습 하였습니다.
+                                        css, 디자인을 라이브러리 도움 없이 만들었습니다.
+                                    </span>
+                                }
+                                techDescription={
+                                    <>
+                                        <div className="front">TypeScript, React</div>
+                                        <div className="back">Recoil, Firebase</div>
+                                        <div className="sorcue-code-wrapper">
+                                            <a
+                                                rel="noreferrer"
+                                                className="source-code"
+                                                href="https://github.com/jaewoong2/mini-project"
+                                                target="_blank"
+                                            >
+                                                소스코드 /
+                                            </a>
+                                            제작기간 2020.10 ~ 10
+                                        </div>
+                                    </>
+                                }
+                            />
+                        }
+                        className="project-image-section"
+                        images={firebaseImages.map(image => (image ? image : ''))}
+                    />
+                </div>
             </Section>
-            {imageClicked?.map(
-                (image, idx: number) =>
-                    image.isClicked && (
-                        <ImgArticle key={`image -${idx}`}>
-                            <MdClear onClick={onClickCancelImage} className="clear-icon" />
-                            <div className="image-figure-wrapper">
-                                <IoIosArrowDropleftCircle onClick={onClickLeftArrow(idx)} className="arrow left" />
-                                <figure className="image-figure">
-                                    <img className="image" src={image.src} />
-                                    <figcaption className="capation">{idx + 1 + '/' + imageClicked.length}</figcaption>
-                                </figure>
-                                <IoIosArrowDroprightCircle onClick={onClickRightArrow(idx)} className="arrow right" />
-                            </div>
-                        </ImgArticle>
-                    ),
-            )}
         </Layout>
     );
 };
@@ -255,7 +234,7 @@ export const query = graphql`
             edges {
                 node {
                     id
-                    fluid(maxWidth: 1500, maxHeight: 1500) {
+                    fluid {
                         ...GatsbyImageSharpFluid
                         originalName
                     }

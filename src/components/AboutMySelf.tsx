@@ -1,170 +1,151 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { graphAnimation, loadAnimation } from './style/global-theme';
+import React, { useCallback, useMemo, useState } from 'react';
+import styled, { useTheme } from 'styled-components';
+import { loadAnimation } from './style/global-theme';
 
-const Main = styled.main`
+const Main = styled.section`
     width: 100%;
-    min-height: 70vh;
-    .my-image-wrapper {
-        width: 100%;
-        height: 100%;
-        margin-top: 200px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    /* min-height: 70vh; */
+    margin-bottom: 50px;
+    display: flex;
+    align-items: flex-end;
 
-        .my-image-figure {
-            width: 50%;
-            height: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 6px;
-            margin: 0;
-            min-width: 150px;
+    .clarification-wrapper {
+        width: 45%;
+        height: 20%;
+        background-color: ${({ theme }) => theme.color.dark};
+        border-radius: 2px;
+        margin-left: 20px;
+        margin-bottom: 20px;
 
-            .my-image {
-                border-radius: 50%;
-                padding: 0;
-                margin: 0px;
-                width: 100%;
-                height: 100%;
-                max-width: 100%;
-                max-height: 100%;
-            }
+        .clarification {
+            padding: 20px;
+            color: ${({ theme }) => theme.color.primary};
+            box-shadow: 2px 2px 5px
+                ${({ theme }) => (theme.isDarkMode === true ? 'rgba(255, 255, 255, 0.435)' : 'rgba(0, 0, 0, 0.435)')};
+            width: 100%;
+            font-size: 0.75em;
+            height: 100%;
         }
     }
 
-    .image-clicked-wrapper {
-        width: 100%;
-        transition: all 1s ease-in-out;
-        display: flex;
-        justify-content: flex-start;
+    .history-wrapper {
+        position: relative;
+        padding-left: 10px;
+        width: 50%;
 
-        .image-clicked-figure {
-            transition: all 1s ease-in-out;
-            width: 30%;
-            height: 30%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-            min-width: 100px;
-            .my-image {
-                border-radius: 50%;
-                padding: 0;
-                margin: 0px;
-                width: 100%;
-                height: 100%;
-                max-width: 100%;
-                max-height: 100%;
-            }
-        }
+        .date-wrapper {
+            margin-bottom: 10px;
 
-        .line {
-            width: 70%;
-            max-width: 70%;
-            display: flex;
-            align-items: center;
-            position: relative;
-            animation: ${loadAnimation} 4s linear;
             &::after {
-                opacity: 0.65;
                 content: '';
-                border-radius: 50px;
-                animation: ${graphAnimation} 2s;
                 position: absolute;
-                width: 95%;
-                margin-left: 10px;
-                height: 2px;
-                background-color: ${({ theme }) => theme.color.icon};
+                left: 0;
+                top: 0;
+                width: 2px;
+                height: 100%;
+                background-color: ${({ theme }) => theme.color.dark};
+                transition: background-color 0.5s linear;
             }
-
-            span {
-                width: 17.8%;
-                animation: ${graphAnimation} 3s linear;
+            .date {
                 position: relative;
-                &::after {
+                display: flex;
+                height: 22px;
+                align-items: center;
+                padding-left: 12px;
+                color: ${({ theme }) => (theme.isDarkMode === true ? theme.color.yellow : theme.color.purple)};
+                text-shadow: ${({ theme }) => theme.color.boxShadow};
+                &::before {
+                    content: '';
                     position: absolute;
-                    animation: ${loadAnimation} 4s linear;
-                    font-size: 0.9em;
+                    /* width: 22px;
+                    height: 22px; */
+                    width: 18px;
+                    height: 2px;
+                    left: -10px;
+                    top: 11px;
+                    /* border-radius: 50%; */
                     background-color: ${({ theme }) => theme.color.dark};
-                    height: 0px;
-                    width: 2px;
-                    color: ${({ theme }) => theme.color.dark};
                 }
+                /* &::after {
+                    content: '';
+                    position: absolute;
+                    width: 16px;
+                    height: 16px;
+                    left: 3.2px;
+                    top: 3px;
+                    border-radius: 50%;
+                    background-color: ${({ theme }) => theme.color.primary};
+                    transition: background-color 0.5s linear;
+                } */
             }
-
-            .birth {
-                margin-left: 30px;
-                &::after {
-                    content: '1995.12.01 출생';
-                }
-            }
-            .first {
-                &::after {
-                    content: '2014.03.한국외국어대학교.글로벌';
-                }
-            }
-            .second {
-                &::after {
-                    content: '2016.03.숭실대학교';
-                }
-            }
-
-            .navy {
-                height: 2px;
-                z-index: 2;
-                background-color: navy;
-                &::after {
-                    content: '2017.05.해군 641기';
-                }
-            }
-
-            .person {
-                &::after {
-                    content: '2019.04.병장 만기전역';
-                }
-            }
-            .dev {
-                &::after {
-                    content: '2019.11.생활코딩.HTML.첫강의';
+            .description {
+                width: fit-content;
+                font-size: 0.75em;
+                margin-top: 5px;
+                position: relative;
+                margin-left: 5px;
+                cursor: pointer;
+                &::before {
+                    content: '';
+                    color: inherit;
+                    margin-right: 5px;
                 }
             }
         }
     }
 `;
 type AboutMySelfProps = {
-    imageSrc: string;
+    myHistory: myHistoryProps[];
+    circleColor?: string;
+};
+type myHistoryProps = {
+    date?: string;
+    description?: string | React.ReactNode | JSX.Element;
+    clarification?: string;
 };
 
-const AboutMySelf: React.FC<AboutMySelfProps> = ({ imageSrc }) => {
-    const [isClicked, setIsClicked] = useState(false);
+const AboutMySelf: React.FC<AboutMySelfProps> = ({ myHistory, circleColor = 'rgba(252, 126, 141, 0.6)' }) => {
+    const [isClicked, setIsClicked] = useState({ isClicked: false, index: 0 });
+    const theme = useTheme();
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsClicked(true);
-        }, 700);
-        return () => clearTimeout(timer);
-    }, []);
+    const ThemeWithProps: typeof theme = useMemo(() => {
+        return {
+            ...theme,
+            props: {
+                circleColor,
+            },
+        };
+    }, [theme]);
+
+    const onClickDescription = useCallback(
+        idx => () => {
+            setIsClicked({
+                isClicked: true,
+                index: idx,
+            });
+        },
+        [],
+    );
 
     return (
-        <Main>
-            <section className={isClicked ? 'image-clicked-wrapper' : 'my-image-wrapper'}>
-                <figure className={isClicked ? 'image-clicked-figure' : 'my-image-figure'}>
-                    <img className="my-image" src={imageSrc} />
-                </figure>
-                {isClicked && (
-                    <div className="line">
-                        <span className="birth" />
-                        <span className="first" />
-                        <span className="second" />
-                        <span className="navy" />
-                        <span className="person" />
-                        <span className="dev" />
-                    </div>
-                )}
+        <Main theme={ThemeWithProps}>
+            <section className="history-wrapper">
+                {myHistory?.map((history, idx) => (
+                    <>
+                        <div key={'history-' + idx} className="date-wrapper">
+                            <div className="date text">{history.date}</div>
+                            <div onClick={onClickDescription(idx)} className="description text">
+                                {history.description}
+                            </div>
+                        </div>
+                    </>
+                ))}
             </section>
+            {isClicked.isClicked && (
+                <div className="clarification-wrapper">
+                    <div className="clarification">{myHistory[isClicked.index].clarification}</div>
+                </div>
+            )}
         </Main>
     );
 };

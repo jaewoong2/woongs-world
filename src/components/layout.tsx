@@ -9,7 +9,7 @@ const Container = styled.div`
     align-items: center;
     flex-direction: column;
     min-height: 100vh;
-    min-width: 100vw;
+    min-width: 97vw;
 
     .nav-container {
         width: 100%;
@@ -102,6 +102,12 @@ const Layout: React.FC = ({ children }) => {
                         </h3>
                     </Link>
                     <div className="nav-sub text">
+                        <Link to={`/blog/`} className="link-about">
+                            Blog
+                        </Link>
+                        <Link to={`/portfolio/`} className="link-about">
+                            Project
+                        </Link>
                         <Link to={`/about/`} className="link-about">
                             About
                         </Link>

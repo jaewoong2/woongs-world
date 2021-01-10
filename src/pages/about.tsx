@@ -1,12 +1,10 @@
-import { keyframes } from 'styled-components';
 import { graphql, PageProps } from 'gatsby';
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Layout from '../components/layout';
 import { FiGithub } from 'react-icons/fi';
 import { BsFilePost } from 'react-icons/bs';
 import { graphAnimation, loadAnimation } from '../components/style/global-theme';
-import MyImageSlide from '../components/MyImageSlide';
 import AboutMySelf from '../components/AboutMySelf';
 
 interface AboutPageProps extends PageProps {
@@ -107,13 +105,12 @@ const Contact = styled.section`
     margin-left: 10px;
 
     .contact-icon {
-        color: inherit;
-        text-decoration: none;
         margin-bottom: 10px;
         width: 100%;
         display: flex;
         align-items: center;
         margin-top: 15px;
+        text-decoration: none;
         color: ${({ theme }) => theme.color.dark};
 
         svg {
@@ -188,10 +185,60 @@ const Paragraph = styled.p`
     }
 `;
 
-export default function About({ data }: AboutPageProps) {
+type myHistoryProps = {
+    date: string;
+    description: string | React.ReactNode | JSX.Element;
+    clarification: string;
+};
+
+const histories: myHistoryProps[] = [
+    {
+        date: '1995.12.01',
+        description: '출생',
+        clarification: '느긋한 성격을 갖고 있습니다.',
+    },
+    {
+        date: '2014.02',
+        description: '강원대학교 사범대학부설고등학교 졸업',
+        clarification: '문과',
+    },
+    {
+        date: '2014.03',
+        description: '한국외국어대학교 글로벌캠퍼스 인문학부 입학',
+        clarification: '인문학이 맞지않아 방황을 하며 하고싶은 것을 찾기 시작한 때 입니다.',
+    },
+    {
+        date: '2014.09 - 2015.11',
+        description: '1학기 후 휴학후, 수능 준비.',
+        clarification: '휴학하며 하고 싶은 것을 찾았고, 상경계열 및 이공계열 을 가기 위해 수능 준비를 하였습니다.',
+    },
+    {
+        date: '2016.03',
+        description: '숭실대학교 전자정보공학부 IT융합전공 입학',
+        clarification: 'IT 업계를 가고 싶어 IT융합전공을 선택하여 입학 하였습니다.',
+    },
+    {
+        date: '2017.05 - 2019.04',
+        description: '대한민국 해군 641기 병장 만기전역',
+        clarification: '남들과 다른 군입대를 하고 싶었기 때문에, 주위에서 비교적 가지 않은 해군에 입대하였습니다.',
+    },
+    {
+        date: '2020.11',
+        description: '휴학 후, 아르바이트를 병행하며 개발공부 시작',
+        clarification: '여러사람을 만나며 하고싶은 것에 대해 구체화를 하였고, 결단 끝에 개발공부를 시작하였습니다.',
+    },
+    {
+        date: '2020.03',
+        description: '2020학기 복학',
+        clarification: '궁극적인 목표(개발자) 를 위해 복학을 하였습니다.',
+    },
+];
+
+const About: React.FC<AboutPageProps> = ({ data }) => {
+    // imageSrc={data.allImageSharp.edges[0].node.fluid.src}
     return (
         <Layout>
-            <AboutMySelf imageSrc={data.allImageSharp.edges[0].node.fluid.src} />
+            <AboutMySelf myHistory={histories} />
             <SectionTechStack>
                 <span className="stack cpp text">C++</span>
                 <span className="stack cs text">C#</span>
@@ -211,8 +258,8 @@ export default function About({ data }: AboutPageProps) {
                 </a>
             </Contact>
             <Paragraph className="text">
-                그렇다 할 프로젝트는 없지만, 꾸준히 개인 프로젝트를 해왔습니다. 현재, 숭실대학교 YOURSSU 프론트엔드
-                팀에서 부족하지만 열심히 하고 있습니다. 배우는 걸 좋아하고, 그 누구에 못지않는 열정을 갖고 있습니다.
+                경력은 없지만, 꾸준히 개인 프로젝트를 해왔습니다. 현재, 숭실대학교 YOURSSU 프론트엔드 팀에서 부족하지만
+                열심히 하고 있습니다. 배우는 걸 좋아하고, 그 누구에 못지않는 열정을 갖고 있습니다.
             </Paragraph>
         </Layout>
     );
@@ -258,7 +305,9 @@ export default function About({ data }: AboutPageProps) {
     //     </IntroduceOneLine>
     //   </Layout>
     // )
-}
+};
+
+export default About;
 
 // pages 폴더에 있는 것은 이렇게
 // export const query = graphql`

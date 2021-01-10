@@ -1,50 +1,69 @@
-import React from "react"
-import { graphql, PageProps, useStaticQuery } from "gatsby"
-import Layout from "../components/layout"
+import React, { useEffect, useState } from 'react';
+import { graphql, PageProps, useStaticQuery } from 'gatsby';
+import Layout from '../components/layout';
+import styled from 'styled-components';
 
-export default function BlogPost() {
-  const data = useStaticQuery(
-    graphql`
-      query {
-        markdownRemark {
-          html
-          frontmatter {
-            title
-          }
+const Section = styled.section`
+    .markdown-wrapper {
+        * {
+            color: inherit;
         }
-      }
-    `
-)
-  const post = data.markdownRemark
-  
-  return (
-    <Layout>
-      <div>
-        <h1 className="text">{post.frontmatter.title}</h1>
-        <div className="text" dangerouslySetInnerHTML={{ __html: post.html }} />
-      </div>
-    </Layout>
-  )
-}
+        code {
+            background-color: rgba(220, 220, 220, 0.9);
+            padding: 2px;
+            color: black;
+            border-radius: 5px;
+        }
+        pre {
+            background-color: ${({ theme }) =>
+                theme.isDarkMode === true ? 'rgba(220, 220, 220, 0.56)' : 'rgba(0, 0, 0, 0.84)'};
+            color: ${({ theme }) => theme.color.primary};
+            padding: 10px;
+            overflow: auto;
+            code {
+                background-color: unset;
+                color: inherit;
+            }
+        }
+    }
+`;
 
-// interface BlogPostProps extends PageProps {
-//   data: {
-//     markdownRemark: {
-//       html: string,
-//       frontmatter: {
-//         title: string
-//       }
-//     }
-//   }
-// }
+type makrDownRemarkType = {
+    html: string;
+    frontmatter: { title: string };
+};
 
-// export const query = graphql`
-//   query($slug: String!) {
-//     markdownRemark(fields: { slug: { eq: $slug } }) {
-//       html
-//       frontmatter {
-//         title
-//       }
-//     }
-//   }
-// `
+type dataType = {
+    data: {
+        markdownRemark: makrDownRemarkType;
+    };
+};
+
+const BlogPost: React.FC<dataType> = ({ data }) => {
+    const post = data.markdownRemark;
+
+    return (
+        <Layout>
+            <Section>
+                <h1 className="text">{post?.frontmatter.title}</h1>
+                <div
+                    className="text markdown-wrapper"
+                    dangerouslySetInnerHTML={{ __html: post?.html ? post?.html : '' }}
+                />
+            </Section>
+        </Layout>
+    );
+};
+
+export default BlogPost;
+
+export const query = graphql`
+    query($slug: String!) {
+        markdownRemark(fields: { slug: { eq: $slug } }) {
+            html
+            frontmatter {
+                title
+            }
+        }
+    }
+`;
