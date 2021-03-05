@@ -33,17 +33,6 @@ const Main = styled.section`
 
         .date-wrapper {
             margin-bottom: 10px;
-
-            &::after {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 2px;
-                height: 100%;
-                background-color: ${({ theme }) => theme.color.dark};
-                transition: background-color 0.5s linear;
-            }
             .date {
                 position: relative;
                 display: flex;
@@ -52,29 +41,6 @@ const Main = styled.section`
                 padding-left: 12px;
                 color: ${({ theme }) => (theme.isDarkMode === true ? theme.color.yellow : theme.color.purple)};
                 text-shadow: ${({ theme }) => theme.color.boxShadow};
-                &::before {
-                    content: '';
-                    position: absolute;
-                    /* width: 22px;
-                    height: 22px; */
-                    width: 18px;
-                    height: 2px;
-                    left: -10px;
-                    top: 11px;
-                    /* border-radius: 50%; */
-                    background-color: ${({ theme }) => theme.color.dark};
-                }
-                /* &::after {
-                    content: '';
-                    position: absolute;
-                    width: 16px;
-                    height: 16px;
-                    left: 3.2px;
-                    top: 3px;
-                    border-radius: 50%;
-                    background-color: ${({ theme }) => theme.color.primary};
-                    transition: background-color 0.5s linear;
-                } */
             }
             .description {
                 width: fit-content;

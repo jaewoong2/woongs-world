@@ -5,7 +5,7 @@ folder: "tsl"
 tags: ["hooks", "react", "typescript"]
 ---
 
-```ts
+```javascript
 import { useState, useCallback, Dispatch, SetStateAction } from 'react';
 
 function useInput<T>(initalValue: T)
@@ -24,7 +24,7 @@ export default useInput;
 ### Form
 로그인이나 회원가입 기능을 구현할 때, `input tag` 를 많이 사용하게 될 것이다. `input tag`의 상태값을 받기위해서 `value` 값과 `onChange` 함수를 구현해주어야 하는데, `input` 이 많아 지면 `Component` 에서 작성해야 하는 함수가 많아진다. 이를 위해 만든 커스텀 훅이다.
 
-```ts
+```javascript
 import useInput from '../hooks/useInput.tsx'
 
 ...

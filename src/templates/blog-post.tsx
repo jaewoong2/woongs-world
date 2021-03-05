@@ -1,29 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import { graphql, PageProps, useStaticQuery } from 'gatsby';
-import Layout from '../components/layout';
+import React from 'react';
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
+import MainComponent from './Layout';
 
 const Section = styled.section`
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    display: flex;
+    flex-direction: column;
+    .text {
+        padding-bottom: 10px;
+        position: relative;
+        &::before {
+            content: '';
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            margin-bottom: 20px;
+            height: 2px;
+            border-radius: 8px;
+            background-color: ${({ theme }) => theme.color.border};
+        }
+    }
     .markdown-wrapper {
-        * {
+        font-size: 0.875em;
+        color: ${({ theme }) => theme.color.dark};
+        h3,
+        h1,
+        h2,
+        h4 {
             color: inherit;
         }
-        code {
-            background-color: rgba(220, 220, 220, 0.9);
-            padding: 2px;
-            color: black;
-            border-radius: 5px;
-        }
         pre {
-            background-color: ${({ theme }) =>
-                theme.isDarkMode === true ? 'rgba(220, 220, 220, 0.56)' : 'rgba(0, 0, 0, 0.84)'};
-            color: ${({ theme }) => theme.color.primary};
-            padding: 10px;
-            overflow: auto;
-            code {
-                background-color: unset;
-                color: inherit;
-            }
+            background-color: ${({ theme }) => theme.color.primary};
         }
     }
 `;
@@ -43,15 +54,12 @@ const BlogPost: React.FC<dataType> = ({ data }) => {
     const post = data.markdownRemark;
 
     return (
-        <Layout>
+        <MainComponent>
             <Section>
                 <h1 className="text">{post?.frontmatter.title}</h1>
-                <div
-                    className="text markdown-wrapper"
-                    dangerouslySetInnerHTML={{ __html: post?.html ? post?.html : '' }}
-                />
+                <div className="markdown-wrapper" dangerouslySetInnerHTML={{ __html: post?.html ? post?.html : '' }} />
             </Section>
-        </Layout>
+        </MainComponent>
     );
 };
 

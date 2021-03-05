@@ -5,20 +5,21 @@ export const MainContainer = styled.main`
     display: flex;
     justify-content: center;
     position: relative;
+    padding: 3px;
     .main-container {
+        margin-top: 10px;
         width: 67%;
-        border: 1px solid red;
-        @media screen and (max-width: 960px) {
+        @media screen and (max-width: 1050px) {
             width: 100%;
         }
     }
 
     .section-container {
         width: 100%;
-        margin-top: 30px;
+        margin-top: 20px;
         display: flex;
         justify-content: space-evenly;
-        @media screen and (max-width: 960px) {
+        @media screen and (max-width: 1050px) {
             width: 100%;
             flex-direction: column;
         }
@@ -27,16 +28,16 @@ export const MainContainer = styled.main`
 
 export const MainSection = styled.section`
     width: 100%;
-    border: 2px solid blue;
+    border: 2.3px solid ${({ theme }) => theme.color.border};
+    border-radius: 8px;
 `;
 
 export const SideSection = styled.section`
     width: 16%;
-    border: 2px solid green;
     left: 0;
     top: 0;
     position: absolute;
-    @media screen and (max-width: 960px) {
+    @media screen and (max-width: 1050px) {
         position: relative;
         width: 100%;
         margin: 0;
