@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Layout from '../components/layout';
 import { FiGithub } from 'react-icons/fi';
 import { BsFilePost } from 'react-icons/bs';
-import { graphAnimation, loadAnimation } from '../components/style/global-theme';
+import { graphAnimation, loadAnimation } from '../style/global-theme';
 import AboutMySelf from '../components/AboutMySelf';
 
 interface AboutPageProps extends PageProps {

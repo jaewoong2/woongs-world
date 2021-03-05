@@ -1,16 +1,15 @@
-import { createContext } from "react";
-
+import { createContext } from 'react';
 
 interface ThemeContextTypes {
     isDarkMode: boolean;
-    setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>
+    setIsDarkMode: (value: boolean) => void;
 }
 
 const initialState: ThemeContextTypes = {
     isDarkMode: false,
-    setIsDarkMode: () => {},
-}
+    setIsDarkMode: () => true,
+};
 
 const DarkThemeContext = createContext<ThemeContextTypes>(initialState);
 
-export default DarkThemeContext
+export default DarkThemeContext;

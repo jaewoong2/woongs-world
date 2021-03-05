@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { AiFillRightCircle } from 'react-icons/ai';
 import styled from 'styled-components';
-import { loadAnimation } from './style/global-theme';
+import { loadAnimation } from '../style/global-theme';
 
 const Section = styled.section`
     h3 {

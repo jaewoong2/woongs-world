@@ -5,7 +5,7 @@ import { IoSearchCircle } from 'react-icons/io5';
 import styled from 'styled-components';
 import Layout from '../components/layout';
 import useInput from '../hooks/useInput';
-import { loadAnimation } from '../components/style/global-theme';
+import { loadAnimation } from '../style/global-theme';
 import { BsArrowUpLeft } from 'react-icons/bs';
 import { MdClear } from 'react-icons/md';
 import Recommend from '../components/serach/Recommend';

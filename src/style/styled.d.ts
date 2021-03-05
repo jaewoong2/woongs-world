@@ -13,7 +13,9 @@ declare module 'styled-components' {
             icon: string;
             border: string;
             boxShadow: string;
+            hoverColor: string;
             hoverBackground: string;
+            tagColor: string;
         };
         props?: any;
     }

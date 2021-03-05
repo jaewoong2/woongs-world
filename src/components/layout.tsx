@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { RiMoonClearFill } from 'react-icons/ri';
 import { FaSun } from 'react-icons/fa';
-import DarkThemeContext from './provider';
+import DarkThemeContext from '../provider';
 const Container = styled.div`
     display: flex;
     align-items: center;
@@ -78,7 +78,7 @@ const Layout: React.FC = ({ children }) => {
 
     const onClickToggle = useCallback(() => {
         localStorage.setItem('isDarkMode', JSON.stringify({ value: !isDarkMode }));
-        setIsDarkMode(prev => !prev);
+        setIsDarkMode(!isDarkMode);
     }, [setIsDarkMode, isDarkMode]);
 
     useEffect(() => {

@@ -6,9 +6,9 @@ const StyledThemeProvider: React.FC = ({ children }) => {
     const { isDarkMode } = useContext(DarkThemeContext);
     const color = {
         white: 'rgb(250, 250, 250)',
-        black: 'rgb(30, 31, 33)',
+        black: 'rgb(30, 31, 33, 0.94)',
         yellow: 'rgb(253, 216, 4)',
-        purple: 'rgba(107, 82, 248, 0.904)',
+        purple: 'rgba(107, 82, 248, 1)',
     };
 
     const theme: DefaultTheme = useMemo(
@@ -16,6 +16,8 @@ const StyledThemeProvider: React.FC = ({ children }) => {
             isDarkMode: isDarkMode,
             color: {
                 ...color,
+                tagColor: isDarkMode ? 'rgba(202, 214, 240, 0.78)' : 'rgba(13, 34, 80, 0.52)',
+                hoverColor: isDarkMode ? 'rgba(50, 50, 50, 0.99)' : 'rgba(40, 40, 40, 0.55)',
                 primary: isDarkMode ? color.black : color.white,
                 dark: isDarkMode ? color.white : color.black,
                 icon: isDarkMode ? color.yellow : color.black,
