@@ -17,7 +17,7 @@ export const Container = styled.div`
         border: 2.2px solid ${({ theme }) => theme.color.border};
         border-radius: 7px;
 
-        @media screen and (max-width: 1050px) {
+        @media screen and (max-width: 1050px) and (min-width: 450px) {
             flex-direction: row;
             max-width: 100%;
             max-height: 150px;
@@ -29,20 +29,27 @@ export const Container = styled.div`
             width: 100%;
             display: flex;
             flex-direction: column;
-            margin-left: 10px;
             @media screen and (max-width: 1050px) {
                 width: 40%;
                 font-size: 0.85em;
                 margin: 0;
                 padding: 0;
             }
+            .one-line {
+                color: ${({ theme }) => (theme.isDarkMode ? theme.color.yellow : theme.color.purple)};
+            }
             p {
                 font-size: 0.87em;
+                margin-left: 10px;
                 margin: 0;
+                margin-left: 20%;
                 padding: 0 0 8px 0;
                 @media screen and (max-width: 1050px) {
                     margin: 0;
                     padding-bottom: 5px;
+                }
+                @media screen and (max-width: 450px) {
+                    font-size: 1.125em;
                 }
             }
         }
@@ -56,6 +63,7 @@ export const Container = styled.div`
             max-width: 150px;
             max-height: 150px;
             border-radius: 50%;
+
             @media screen and (max-width: 1050px) {
                 height: auto;
                 max-height: 150px;
@@ -76,9 +84,10 @@ export const Contact = styled.section`
     width: 100%;
     display: flex;
     flex-direction: row;
+    align-items: center;
     margin-top: 15px;
     margin-left: 10px;
-    @media screen and (max-width: 1050px) {
+    @media screen and (max-width: 1050px) and (min-width: 450px) {
         font-size: 0.85em;
         flex-direction: column;
     }
@@ -88,22 +97,32 @@ export const Contact = styled.section`
         width: 100%;
         display: flex;
         align-items: center;
+        justify-content: space-evenly;
         text-decoration: none;
         color: ${({ theme }) => theme.color.dark};
-        font-size: 0px;
-        @media screen and (max-width: 1050px) {
+        .icon-pharagraph {
+            margin: 0;
+            padding: 0;
+            display: none;
+        }
+        @media screen and (max-width: 1050px) and (min-width: 450px) {
             font-size: 0.85em;
             justify-content: center;
             flex-direction: row;
+            .icon-pharagraph {
+                display: block;
+            }
         }
 
         svg {
-            color: ${({ theme }) => theme.color.icon};
+            color: ${({ theme }) => theme.color.dark};
             min-width: 15px;
             min-height: 15px;
             max-width: 20px;
             max-height: 20px;
-            margin-right: 7px;
+            @media screen and (max-width: 1050px) {
+                margin-right: 5px;
+            }
         }
     }
 `;

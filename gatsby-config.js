@@ -6,10 +6,29 @@
 module.exports = {
     siteMetadata: {
         title: '@JaeWoong2',
+        author: 'JaeWoong Lim',
+        description: 'prepare For FE developer',
+        siteUrl: 'https://jaewoong2.github.io/woongs-world/',
     },
     pathPrefix: '/woongs-world',
     /* Your site config here */
     plugins: [
+        `gatsby-plugin-sitemap`,
+        `gatsby-plugin-react-helmet`,
+        {
+            resolve: `gatsby-plugin-robots-txt`,
+            options: {
+                host: `https://jaewoong2.github.io/woongs-world/`,
+                sitemap: `https://jaewoong2.github.io/woongs-world/sitemap.xml`,
+                poilcy: [{ userAgent: '*', allow: '/' }],
+            },
+        },
+        {
+            resolve: `gatsby-plugin-disqus`,
+            options: {
+                shortname: `woongs-world`,
+            },
+        },
         `gatsby-plugin-styled-components`,
         {
             resolve: 'gatsby-source-filesystem',
@@ -48,6 +67,7 @@ module.exports = {
             options: {
                 fonts: [
                     `limelight`,
+                    `DotGothic16`,
                     `source sans pro\:300,400,400i,700`, // you can also specify font weights and styles
                 ],
                 display: 'swap',

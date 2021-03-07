@@ -2,6 +2,8 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import MainComponent from './Layout';
+import ReactHelmet from './ReactHelmet';
+import CommentTemplate from '../components/disqus';
 
 const Section = styled.section`
     padding: 20px;
@@ -39,9 +41,20 @@ const Section = styled.section`
     }
 `;
 
+const CommentWrppaer = styled.div`
+    margin-left: 5%;
+    width: 90%;
+    padding: 20px;
+    border-radius: 8px 8px 0 0;
+    background-color: ${({ theme }) => (theme.isDarkMode ? theme.color.whiteDarker : theme.color.white)};
+    * {
+        color: ${({ theme }) => theme.color.black} !important;
+    }
+`;
+
 type makrDownRemarkType = {
     html: string;
-    frontmatter: { title: string };
+    frontmatter: { title: string; tags: string[]; description: string };
 };
 
 type dataType = {
@@ -55,10 +68,23 @@ const BlogPost: React.FC<dataType> = ({ data }) => {
 
     return (
         <MainComponent>
+            <ReactHelmet
+                favicon={'https://jaewoong2.github.io/woongs-world/favicon.ico'}
+                keywords={post?.frontmatter?.description}
+                title={post?.frontmatter?.title}
+                description={post?.frontmatter?.description}
+            />
             <Section>
                 <h1 className="text">{post?.frontmatter.title}</h1>
                 <div className="markdown-wrapper" dangerouslySetInnerHTML={{ __html: post?.html ? post?.html : '' }} />
             </Section>
+            <CommentWrppaer>
+                <CommentTemplate
+                    page_url={'https://jaewoong2.github.io/' + location.pathname}
+                    identifier={post?.frontmatter?.title}
+                    page_title={post?.frontmatter?.title}
+                />
+            </CommentWrppaer>
         </MainComponent>
     );
 };

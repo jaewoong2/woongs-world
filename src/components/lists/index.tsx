@@ -15,10 +15,7 @@ const Lists: React.VFC<ListsProps> = ({ idx, title, slug, date, tags }) => {
         <Container>
             <div className="list-wrapper">
                 <Link className="link-posts" to={slug}>
-                    <h3 className="post-title text">
-                        <span className="index">{idx + '.'}</span>
-                        {title}
-                    </h3>
+                    <h3 className="post-title text">{`${title}`}</h3>
                 </Link>
                 <h4 className="post-date text">: {date}</h4>
                 <div>

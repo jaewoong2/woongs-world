@@ -21,7 +21,8 @@ type nodeTypes = {
     frontmatter: {
         title: string;
         date: string;
-        tags: string[];
+        tags?: string[];
+        description?: '';
     };
     fields: {
         slug: string;

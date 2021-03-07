@@ -24,7 +24,7 @@ interface AboutPageProps extends PageProps {
 
 const Paragraph = styled.p`
     width: 100%;
-    margin-top: 25px;
+    height: 250px;
     display: flex;
     font-size: 1.5em;
     flex-direction: column;
@@ -32,14 +32,7 @@ const Paragraph = styled.p`
     align-items: center;
     position: relative;
     padding: 10px;
-    /* &::before {
-        content: '';
-        width: 98%;
-        margin-bottom: 20px;
-        height: 2.5px;
-        border-radius: 8px;
-        background-color: ${({ theme }) => theme.color.border};
-    } */
+    font-family: 'DotGothic16', 'source sans pro', sans-serif;
 `;
 
 const randomState = ['hard-working', 'pleasing', 'self-confidence', 'fast-comprehension'];

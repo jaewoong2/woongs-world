@@ -4,6 +4,7 @@ declare module 'styled-components' {
     export interface DefaultTheme {
         isDarkMode: boolean;
         color: {
+            whiteDarker: string;
             black: string;
             purple: string;
             white: string;

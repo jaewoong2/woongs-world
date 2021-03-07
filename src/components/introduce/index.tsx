@@ -14,8 +14,8 @@ const Introduce: React.VFC<{ imageSrc: string }> = ({ imageSrc }) => {
                     </Link>
                 </article>
                 <div className="info-container">
-                    <p className="name text">Name: Lim Jaewoong</p>
-                    <p className="univ text">Univ: SoongSil Univ.</p>
+                    <p className="name text">Lim Jaewoong</p>
+                    <p className="univ text">SoongSil Univ.</p>
                     <p className="one-line text">Dreaming FE Devloper</p>
                 </div>
                 <Contact>
@@ -26,7 +26,7 @@ const Introduce: React.VFC<{ imageSrc: string }> = ({ imageSrc }) => {
                         target="_blank"
                     >
                         <FiGithub className="icon" size="36px" />
-                        https://github.com/jaewoong2
+                        <p className="icon-pharagraph">https://github.com/jaewoong2</p>
                     </a>
                     <a
                         rel="noreferrer"
@@ -34,7 +34,8 @@ const Introduce: React.VFC<{ imageSrc: string }> = ({ imageSrc }) => {
                         href="https://velog.io/@jwisgenius"
                         target="_blank"
                     >
-                        <BsFilePost className="icon" size="36px" /> https://velog.io/@jwisgenius
+                        <BsFilePost className="icon" size="36px" />
+                        <p className="icon-pharagraph">https://velog.io/@jwisgenius</p>
                     </a>
                 </Contact>
             </div>

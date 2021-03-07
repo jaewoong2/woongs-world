@@ -9,6 +9,7 @@ const StyledThemeProvider: React.FC = ({ children }) => {
         black: 'rgb(30, 31, 33, 0.94)',
         yellow: 'rgb(253, 216, 4)',
         purple: 'rgba(107, 82, 248, 1)',
+        whiteDarker: 'rgba(233, 233, 233, 0.96)',
     };
 
     const theme: DefaultTheme = useMemo(
