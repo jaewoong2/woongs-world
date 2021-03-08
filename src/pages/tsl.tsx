@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Lists from '../components/lists';
 import MainComponent from '../templates/Layout';
 import { ImdProps } from '../utils/type';
@@ -10,9 +10,8 @@ const Tsl: React.VFC<ImdProps> = ({ data }) => {
             <section>
                 {data.allMarkdownRemark.edges.map((edge, idx) => (
                     <Lists
-                        tags={edge.node.frontmatter.tags}
+                        tags={edge?.node?.frontmatter?.tags}
                         title={edge.node.frontmatter.title}
-                        idx={idx + 1}
                         key={edge.node.id.slice(0, 10) + idx}
                         date={edge.node.frontmatter.date}
                         slug={edge.node.fields.slug}

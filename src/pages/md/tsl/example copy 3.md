@@ -3,7 +3,7 @@ title: "Custom Hooks 만들기"
 date: "2021-01-07"
 folder: "tsl"
 tags: ["hooks", "react", "typescript"]
-description: "making hooks easy",
+description: "making hooks easy"
 ---
 
 ```javascript

@@ -6,11 +6,10 @@ type ListsProps = {
     title: string;
     date: string;
     slug: string;
-    tags: string[];
-    idx: number;
+    tags?: string[];
 };
 
-const Lists: React.VFC<ListsProps> = ({ idx, title, slug, date, tags }) => {
+const Lists: React.VFC<ListsProps> = ({ title, slug, date, tags }) => {
     return (
         <Container>
             <div className="list-wrapper">
@@ -19,7 +18,7 @@ const Lists: React.VFC<ListsProps> = ({ idx, title, slug, date, tags }) => {
                 </Link>
                 <h4 className="post-date text">: {date}</h4>
                 <div>
-                    {tags.map(tag => (
+                    {tags?.map(tag => (
                         <Tag key={tag}>{tag}</Tag>
                     ))}
                 </div>

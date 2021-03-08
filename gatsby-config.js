@@ -13,6 +13,15 @@ module.exports = {
     pathPrefix: '/woongs-world',
     /* Your site config here */
     plugins: [
+        {
+            resolve: `gatsby-plugin-google-analytics`,
+            options: {
+                head: true,
+                anonymize: true,
+                // The property ID; the tracking code won't be generated without it
+                trackingId: `${process.env.GA_TRACKING_ID}`,
+            },
+        },
         `gatsby-plugin-sitemap`,
         `gatsby-plugin-react-helmet`,
         {
