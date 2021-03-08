@@ -29,10 +29,16 @@ const Section = styled.section`
     .markdown-wrapper {
         font-size: 0.875em;
         color: ${({ theme }) => theme.color.dark};
+        padding: 5px;
+        p {
+            padding-left: 5px;
+        }
         h3,
         h1,
         h2,
         h4 {
+            padding: 0;
+            padding-top: 3px;
             color: inherit;
         }
         pre {
@@ -53,6 +59,9 @@ const CommentWrppaer = styled.div`
 `;
 
 type makrDownRemarkType = {
+    fileds: {
+        slug: string;
+    };
     html: string;
     frontmatter: { title: string; tags: string[]; description: string };
 };
@@ -65,6 +74,7 @@ type dataType = {
 
 const BlogPost: React.FC<dataType> = ({ data }) => {
     const post = data.markdownRemark;
+    console.log(post);
 
     return (
         <MainComponent>
@@ -80,7 +90,7 @@ const BlogPost: React.FC<dataType> = ({ data }) => {
             </Section>
             <CommentWrppaer>
                 <CommentTemplate
-                    page_url={'https://jaewoong2.github.io/' + location.pathname}
+                    page_url={'https://jaewoong2.github.io/woongs-world' + post?.fileds?.slug}
                     identifier={post?.frontmatter?.title}
                     page_title={post?.frontmatter?.title}
                 />
@@ -94,6 +104,9 @@ export default BlogPost;
 export const query = graphql`
     query($slug: String!) {
         markdownRemark(fields: { slug: { eq: $slug } }) {
+            fields {
+                slug
+            }
             html
             frontmatter {
                 title

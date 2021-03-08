@@ -1,5 +1,7 @@
 import { Link } from 'gatsby';
 import React, { VFC } from 'react';
+import { IoMoonOutline } from 'react-icons/io5';
+import { RiSunLine } from 'react-icons/ri';
 import { HeaderNav, HeadTitle, ToggleButton } from './styles';
 
 interface IHeaderProps {
@@ -21,7 +23,12 @@ const HeadNav: VFC<IHeaderProps> = ({ headers, isDarkMode, setIsDarkMode }) => {
                     </Link>
                 ))}
                 <div className="button-wrapper">
-                    {<ToggleButton onClick={() => setIsDarkMode(!isDarkMode)} className={isDarkMode ? 'dark' : ''} />}
+                    {isDarkMode ? (
+                        <IoMoonOutline onClick={() => setIsDarkMode(!isDarkMode)} />
+                    ) : (
+                        <RiSunLine onClick={() => setIsDarkMode(!isDarkMode)} />
+                    )}
+                    {/* {<ToggleButton onClick={() => setIsDarkMode(!isDarkMode)} className={isDarkMode ? 'dark' : ''} />} */}
                 </div>
             </div>
         </HeaderNav>

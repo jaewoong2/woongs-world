@@ -1,5 +1,5 @@
 export function getInitialProps(): boolean {
-    const isDark = localStorage.getItem('isDarkMode');
+    const isDark = typeof window !== 'undefined' ? window.localStorage?.getItem('isDarkMode') : null;
     return isDark !== null ? JSON.parse(isDark).value : false;
 }
 

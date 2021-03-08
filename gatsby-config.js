@@ -14,7 +14,7 @@ module.exports = {
     /* Your site config here */
     plugins: [
         {
-            resolve: `gatsby-plugin-google-analytics`,
+            resolve: `gatsby-plugin-gtag`,
             options: {
                 head: true,
                 anonymize: true,
@@ -75,7 +75,8 @@ module.exports = {
             resolve: `gatsby-plugin-google-fonts`,
             options: {
                 fonts: [
-                    `limelight`,
+                    `Roboto\:300`,
+                    `Noto Sans KR\:300`,
                     `DotGothic16`,
                     `source sans pro\:300,400,400i,700`, // you can also specify font weights and styles
                 ],

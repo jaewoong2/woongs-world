@@ -18,7 +18,7 @@ const StyledThemeProvider: React.FC = ({ children }) => {
             color: {
                 ...color,
                 tagColor: isDarkMode ? 'rgba(202, 214, 240, 0.78)' : 'rgba(13, 34, 80, 0.52)',
-                hoverColor: isDarkMode ? 'rgba(50, 50, 50, 0.99)' : 'rgba(40, 40, 40, 0.55)',
+                hoverColor: isDarkMode ? 'rgba(200, 200, 200, 0.79)' : 'rgba(40, 40, 40, 0.55)',
                 primary: isDarkMode ? color.black : color.white,
                 dark: isDarkMode ? color.white : color.black,
                 icon: isDarkMode ? color.yellow : color.black,

@@ -5,6 +5,7 @@ import MainComponent from '../templates/Layout';
 import { ImdProps } from '../utils/type';
 
 const Tsl: React.VFC<ImdProps> = ({ data }) => {
+    console.log(data);
     return (
         <MainComponent>
             <section>

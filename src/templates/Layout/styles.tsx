@@ -30,6 +30,7 @@ export const MainSection = styled.section`
     width: 100%;
     border: 2.3px solid ${({ theme }) => theme.color.border};
     border-radius: 8px;
+    min-height: 300px;
 `;
 
 export const SideSection = styled.section`

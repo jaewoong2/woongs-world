@@ -1,8 +1,10 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { useContext } from 'react';
+import Footer from '../../components/footer';
 import Introduce from '../../components/introduce';
 import DarkThemeContext from '../../provider';
 import HeadNav from '../HeadNav';
+import ReactHelmet from '../ReactHelmet';
 import { MainContainer, MainSection, SideSection } from './styles';
 
 type dataType = {
@@ -39,6 +41,12 @@ const MainComponent: React.FC = ({ children }) => {
 
     return (
         <MainContainer>
+            <ReactHelmet
+                favicon={'https://jaewoong2.github.io/woongs-world/favicon.ico'}
+                keywords={'tech, webfrontend, web, dev, algorithm'}
+                title={'Woongs-world DEV'}
+                description={'개발 관련포스팅!'}
+            />
             <div className="main-container">
                 <HeadNav
                     setIsDarkMode={setIsDarkMode}
@@ -51,6 +59,7 @@ const MainComponent: React.FC = ({ children }) => {
                     </SideSection>
                     <MainSection>{children}</MainSection>
                 </div>
+                <Footer />
             </div>
         </MainContainer>
     );

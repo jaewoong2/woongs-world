@@ -18,10 +18,18 @@ export const graphAnimation = keyframes`
 const GlobalStyle = createGlobalStyle`
     * {
         margin: 0;
+        font-family: "Roboto", "Noto Sans KR", sans-serif;
         padding: 0;
     }
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: "Roboto", "Noto Sans KR";
+        font-weight: 300;
+    }
     p {
-        animation: ${loadAnimation} 0.5s linear;
+        /* animation: ${loadAnimation} 0.5s linear; */
     }
 
     .text {

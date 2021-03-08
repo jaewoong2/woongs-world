@@ -1,6 +1,7 @@
 ---
 title: Redux-Toolkit (with_React, Typescript)
 date: "2020-11-09"
+folder: "dev"
 ---
 
 ## 리덕스 툴킷
@@ -22,7 +23,8 @@ date: "2020-11-09"
 이렇게 따로 상수로 정의해주는 것은, 에디터의 자동완성을 통한 오류방지이다.
 
 - `state` : 전역으로 관리하고 싶은 상태
-- `action` : `dispatch`를 통해서 보내주는 것.  
+- `action` : `dispatch`를 통해서 보내주는 것.
+
 ```ts
 dispatch({type : TODO_CREATE, data : { title : '' }})
 // 이런 식으로 객체 형식으로 생겼다. 
@@ -38,6 +40,7 @@ export const todoCreateAction = ({ title } : { title : string }) : TodoCreateAct
 ```
 
 - `reducer` : `action`이 들어왔을 때 `state` 를 정의하는 곳이다.
+
 ```ts
 type todoActionTypes = CrateTodoActionTypes | DeleteActionType | EditTodoActionType | ToggleActionType;
 
@@ -63,6 +66,7 @@ type todoActionTypes = CrateTodoActionTypes | DeleteActionType | EditTodoActionT
     }
 }
 ```
+
  `state`는 초기값 을 `필수`로 정의해주어야 한다. 
  또한, return 값은 `immutable` 값을 갖는데,  
  `state = 1` 이런식으로 직접 정의 해주면 안된다. `state` 값은  __action이 이루어 지기전 상태값들을 갖고 있는데 그 값을 직접 바꾸지 않고 새로운 값을 보내주어야 한다.__ 
@@ -72,6 +76,7 @@ type todoActionTypes = CrateTodoActionTypes | DeleteActionType | EditTodoActionT
 ### 리덕스 툴킷
 
 - `createSlice` 
+
 ```ts
 const exampleSlice = createSlice({
    name : 'example', // 정의하고 싶은 명칭 
@@ -84,8 +89,8 @@ const exampleSlice = createSlice({
      // newId의 type 은 exampleSlice.actions.newId.type
    }
 })
-
 ```
+
 리덕스 툴킷 `createSlice` 의 가장 큰 특징은, reudcer를 사용할 때, `mutable`하다는 것이다. `immer` 가 내부적으로 있어서 `state = state + 1` 이런식으로 상태를 변화 할수 있다는 것이다.
 
 
@@ -121,6 +126,7 @@ const todosSlice = createSlice({
     }
 })
 ```
+
 `action` 안에서 `reducer`를 정의 해줄 수 있는데, 앞의 `create`의 예를 보면 `prepare` 로 상태를 변화하기 전에 먼저 `action`으로 부터 받은 값들을 바꿔서 `action의 reducer` 에게 값을 보내줄 수 있다. 
 
 또한 `createSlice` 에는 `extraReducers` 가 있는데, 다른 `reducer` 에 있는 `type`을 함께 `공유`할 수 있다는 개념으로 생각된다.

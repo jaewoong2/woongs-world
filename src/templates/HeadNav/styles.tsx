@@ -1,4 +1,15 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const moonAnimation = keyframes`
+    from {
+        fill: 'rgb(0, 0, 0, 0)'
+    }
+
+    to {
+        fill: 'rgb(253,216,4)'
+    }
+
+`;
 
 export const HeaderNav = styled.nav`
     width: 100%;
@@ -16,6 +27,32 @@ export const HeaderNav = styled.nav`
     }
 
     .button-wrapper {
+        padding-left: 10px;
+        display: flex;
+        align-items: center;
+
+        svg {
+            cursor: pointer;
+            color: ${({ theme }) => (theme.isDarkMode ? theme.color.white : theme.color.black)};
+            transform: rotate(270deg);
+            width: 1.45em;
+            height: 1.45em;
+            transition: color 0.5s;
+            path {
+                fill: ${({ theme }) => theme.isDarkMode && theme.color.yellow};
+                fill-opacity: ${({ theme }) => theme.isDarkMode && 0};
+                transition: fill-opacity 0.6s, color 0.9s;
+            }
+            &:hover {
+                color: ${({ theme }) => (theme.isDarkMode ? theme.color.white : theme.color.purple)};
+                path {
+                    fill-opacity: 1;
+                    transition: fill-opacity 0.6s;
+                }
+                transition: color 0.5s;
+            }
+        }
+
         .dark {
             &::after {
                 background-color: ${({ theme }) => theme.color.purple};
