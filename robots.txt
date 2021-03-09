@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://jaewoong2.github.io/woongs-world/sitemap.xml
+Host: https://jaewoong2.github.io

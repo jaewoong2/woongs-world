@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/pages/nabout.tsx"],"names":["NewAbout"],"mappings":"8FAAA,gCAMeA,UAJE,WACb,OAAO","file":"component---src-pages-nabout-tsx-983dd4ad264279644c59.js","sourcesContent":["import React from 'react';\r\n\r\nconst NewAbout = () => {\r\n    return <div></div>;\r\n};\r\n\r\nexport default NewAbout;\r\n"],"sourceRoot":""}
