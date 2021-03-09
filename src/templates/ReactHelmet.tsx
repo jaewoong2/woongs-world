@@ -11,6 +11,7 @@ interface IhelmetProps {
 const ReactHelmet: React.VFC<IhelmetProps> = ({ keywords, description, title, favicon }) => {
     return (
         <Helmet>
+            <meta name="google-site-verification" content="toSOo-FxzShs4tTRSaaGs2yaEl_QsbH-GUN2zp-6TC0" />
             <meta name="description" content={description} />
             <meta name="keywords" content={keywords} />
             <title>{title}</title>

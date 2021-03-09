@@ -31,6 +31,7 @@ const Section = styled.section`
         color: ${({ theme }) => theme.color.dark};
         padding: 5px;
         p {
+            color: ${({ theme }) => theme.color.dark} !important;
             padding-left: 5px;
         }
         h3,
@@ -74,7 +75,6 @@ type dataType = {
 
 const BlogPost: React.FC<dataType> = ({ data }) => {
     const post = data.markdownRemark;
-    console.log(post);
 
     return (
         <MainComponent>

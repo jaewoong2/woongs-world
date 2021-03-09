@@ -13,7 +13,7 @@ interface IHeaderProps {
 const HeadNav: VFC<IHeaderProps> = ({ headers, isDarkMode, setIsDarkMode }) => {
     return (
         <HeaderNav>
-            <Link to="/home">
+            <Link to="/">
                 <HeadTitle>HOME</HeadTitle>
             </Link>
             <div className="link-wrapper">

@@ -19,7 +19,7 @@ module.exports = {
                 head: true,
                 anonymize: true,
                 // The property ID; the tracking code won't be generated without it
-                trackingId: `${process.env.GA_TRACKING_ID}`,
+                trackingId: '191572246',
             },
         },
         `gatsby-plugin-sitemap`,

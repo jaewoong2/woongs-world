@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Footer from '../../components/footer';
 import Introduce from '../../components/introduce';
 import DarkThemeContext from '../../provider';
@@ -51,7 +51,7 @@ const MainComponent: React.FC = ({ children }) => {
                 <HeadNav
                     setIsDarkMode={setIsDarkMode}
                     isDarkMode={isDarkMode}
-                    headers={['tsl', 'about', 'dev', 'algorithm']}
+                    headers={['tsl', 'dev', 'algorithm', 'about']}
                 />
                 <div className="section-container">
                     <SideSection>
