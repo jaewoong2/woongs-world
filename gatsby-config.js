@@ -32,12 +32,6 @@ module.exports = {
                 poilcy: [{ userAgent: '*', allow: '/' }],
             },
         },
-        {
-            resolve: `gatsby-plugin-disqus`,
-            options: {
-                shortname: `woongs-world`,
-            },
-        },
         `gatsby-plugin-styled-components`,
         {
             resolve: 'gatsby-source-filesystem',
