@@ -25,18 +25,38 @@ exports.createPages = ({ graphql, actions }) => {
                                 slug
                             }
                         }
+                        next {
+                            fields {
+                                slug
+                            }
+                            frontmatter {
+                                title
+                            }
+                        }
+                        previous {
+                            fields {
+                                slug
+                            }
+                            frontmatter {
+                                title
+                            }
+                        }
                     }
                 }
             }
         `).then(result => {
-            result.data.allMarkdownRemark.edges.map(({ node }) => {
-                console.log(node);
+            result.data.allMarkdownRemark.edges.map(({ node, next, previous }, idx) => {
                 createPage({
                     path: node.fields.slug,
                     component: path.resolve(`./src/templates/blog-post.tsx`),
                     context: {
                         // Data passed to context is available in page queries as GraphQL variables.
                         slug: node.fields.slug,
+                        next: idx === result.data.allMarkdownRemark.edges.length - 1 ? false : next.fields.slug,
+                        nextTitle:
+                            idx === result.data.allMarkdownRemark.edges.length - 1 ? false : next.frontmatter.title,
+                        previous: idx === 0 ? false : previous.fields.slug,
+                        previousTitle: idx === 0 ? false : previous.frontmatter.title,
                     },
                 });
             });

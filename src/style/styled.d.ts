@@ -17,6 +17,7 @@ declare module 'styled-components' {
             hoverColor: string;
             hoverBackground: string;
             tagColor: string;
+            linkColor: string;
         };
         props?: any;
     }
