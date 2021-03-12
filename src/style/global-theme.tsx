@@ -44,7 +44,7 @@ const GlobalStyle = createGlobalStyle`
     html {
         transition: background-color 0.5s linear, color 0.5s linear;
         background-color: ${({ theme }) => theme.color.primary};
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 450px) {
             font-size: 13px;
         }
     }

@@ -5,6 +5,7 @@ import MainComponent from './Layout';
 import ReactHelmet from './ReactHelmet';
 import Utterances from '../components/utterances';
 import PostNavigator from '../components/postnavigator';
+import { Tag } from '../components/lists/styles';
 
 const Section = styled.section`
     padding: 20px;
@@ -12,9 +13,15 @@ const Section = styled.section`
     padding-right: 40px;
     display: flex;
     flex-direction: column;
-    .text {
+    .title {
         padding-bottom: 10px;
         position: relative;
+        h1 {
+            margin-bottom: 3px;
+        }
+        code {
+            font-size: 0.75em;
+        }
         &::before {
             content: '';
             width: 100%;
@@ -28,7 +35,7 @@ const Section = styled.section`
         }
     }
     .markdown-wrapper {
-        font-size: 0.875em;
+        font-size: 0.825em;
         color: ${({ theme }) => theme.color.dark};
         padding: 5px;
         p {
@@ -44,7 +51,15 @@ const Section = styled.section`
             color: inherit;
         }
         pre {
+            margin-top: 30px;
+            margin-bottom: 30px;
             background-color: ${({ theme }) => theme.color.primary};
+        }
+
+        @media screen and (max-width: 450px) {
+            * {
+                font-size: 1em;
+            }
         }
     }
 `;
@@ -57,7 +72,7 @@ const PostNavWrppaer = styled.div`
     justify-content: space-between;
     display: flex;
 
-    @media screen and (max-width: 365px) {
+    @media screen and (max-width: 450px) {
         display: flex;
         flex-direction: column;
     }
@@ -117,7 +132,12 @@ const BlogPost: React.FC<dataType> = ({ pageContext, data }) => {
                 description={post?.frontmatter?.description}
             />
             <Section>
-                <h1 className="text">{post?.frontmatter.title}</h1>
+                <div className="title text">
+                    <h1 className="text">{post?.frontmatter.title}</h1>
+                    {post?.frontmatter?.tags?.map(tag => (
+                        <Tag key={tag}>{tag}</Tag>
+                    ))}
+                </div>
                 <div className="markdown-wrapper" dangerouslySetInnerHTML={{ __html: post?.html ? post?.html : '' }} />
             </Section>
             <PostNavWrppaer>
@@ -145,6 +165,7 @@ export const query = graphql`
             html
             frontmatter {
                 title
+                tags
             }
         }
     }

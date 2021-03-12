@@ -2,7 +2,7 @@ import { Link } from 'gatsby';
 import React, { VFC } from 'react';
 import { IoMoonOutline } from 'react-icons/io5';
 import { RiSunLine } from 'react-icons/ri';
-import { HeaderNav, HeadTitle, ToggleButton } from './styles';
+import { HeaderNav, HeadTitle } from './styles';
 
 interface IHeaderProps {
     headers: string[];

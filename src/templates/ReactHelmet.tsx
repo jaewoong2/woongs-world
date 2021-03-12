@@ -10,12 +10,17 @@ interface IhelmetProps {
 
 const ReactHelmet: React.VFC<IhelmetProps> = ({ keywords, description, title, favicon }) => {
     return (
-        <Helmet>
+        <Helmet
+            htmlAttributes={{
+                lang: 'ko',
+            }}
+        >
+            <meta charSet="utf-8" />
             <meta name="google-site-verification" content="toSOo-FxzShs4tTRSaaGs2yaEl_QsbH-GUN2zp-6TC0" />
             <meta name="description" content={description} />
             <meta name="keywords" content={keywords} />
             <title>{title}</title>
-            <meta property="fb:app_id" content="자신의 app id" />
+            <link rel="icon" type="image/png" href={favicon} sizes={'16x16'} />
             <meta property="og:title" content={title} />
             <meta property="og:image" content={favicon} />
             <meta property="og:site_name" content="sublog" />

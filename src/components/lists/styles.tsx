@@ -47,11 +47,12 @@ export const Title = styled.h1`
     border-bottom: 1px solid;
 `;
 
-export const Tag = styled.span`
+export const Tag = styled.code`
     font-size: 0.85em;
-    width: 100%;
-    border-radius: 6px;
-    padding: 4px;
+    /* width: 100%; */
+    font-family: 'Roboto';
+    border-radius: 4px;
+    padding: 4px 6px 4px 6px;
     overflow: hidden;
     background-color: ${({ theme }) => theme.color.tagColor};
     margin-right: 2px;

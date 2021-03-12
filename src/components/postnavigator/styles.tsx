@@ -27,7 +27,7 @@ export const LinkLeftWrapper = styled.div`
         text-decoration: line-through;
         color: rgba(170, 40, 50, 0.96);
     }
-    @media screen and (max-width: 365px) {
+    @media screen and (max-width: 450px) {
         width: 60%;
     }
 `;
@@ -60,7 +60,7 @@ export const LinkRightWrapper = styled.div`
         text-decoration: line-through;
         color: rgba(170, 40, 50, 0.96);
     }
-    @media screen and (max-width: 365px) {
+    @media screen and (max-width: 450px) {
         width: 60%;
         margin-top: 20px;
         margin-left: 40%;
