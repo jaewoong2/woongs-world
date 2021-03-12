@@ -13,12 +13,14 @@ const PostNavigator: React.VFC<IpostNavigatorProps> = ({ title = '', slug = '', 
     if (left) {
         return slug ? (
             <LinkLeftWrapper>
+                <span className="text placeholder">{'Previous'}</span>
                 <Link className="link-title" to={slug && slug !== true ? slug : '/'}>
                     {title && title != true ? (title.length > 20 ? title.slice(0, 20) + '...' : title) : ''}
                 </Link>
             </LinkLeftWrapper>
         ) : (
             <LinkLeftWrapper>
+                <span className="text placeholder">{'Previous'}</span>
                 <a className="link-title ban">NULL</a>
             </LinkLeftWrapper>
         );
@@ -26,12 +28,14 @@ const PostNavigator: React.VFC<IpostNavigatorProps> = ({ title = '', slug = '', 
 
     return slug ? (
         <LinkRightWrapper>
+            <span className="text placeholder">{'Next'}</span>
             <Link className="link-title" to={slug && slug !== true ? slug : '/'}>
                 {title && title != true ? (title.length > 20 ? title.slice(0, 20) + '...' : title) : ''}
             </Link>
         </LinkRightWrapper>
     ) : (
         <LinkRightWrapper>
+            <span className="text placeholder">{'Next'}</span>
             <a className="link-title ban">NULL</a>
         </LinkRightWrapper>
     );

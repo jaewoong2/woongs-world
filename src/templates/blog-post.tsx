@@ -56,6 +56,11 @@ const PostNavWrppaer = styled.div`
     position: relative;
     justify-content: space-between;
     display: flex;
+
+    @media screen and (max-width: 365px) {
+        display: flex;
+        flex-direction: column;
+    }
 `;
 
 const CommentWrppaer = styled.div`
