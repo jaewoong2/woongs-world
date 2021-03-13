@@ -10,7 +10,7 @@ const Introduce: React.VFC<{ imageSrc: string }> = ({ imageSrc }) => {
             <div className="container-wrapper">
                 <article className="image-container">
                     <Link to="/about">
-                        <img src={imageSrc} />
+                        <img src={imageSrc} alt="my-image" />
                     </Link>
                 </article>
                 <div className="info-container">
@@ -19,24 +19,28 @@ const Introduce: React.VFC<{ imageSrc: string }> = ({ imageSrc }) => {
                     <p className="one-line text">Dreaming FE Devloper</p>
                 </div>
                 <Contact>
-                    <a
-                        rel="noreferrer"
-                        className="contact-icon text"
-                        href="https://github.com/jaewoong2"
-                        target="_blank"
-                    >
-                        <FiGithub className="icon" size="36px" />
-                        <p className="icon-pharagraph">https://github.com/jaewoong2</p>
-                    </a>
-                    <a
-                        rel="noreferrer"
-                        className="contact-icon text"
-                        href="https://velog.io/@jwisgenius"
-                        target="_blank"
-                    >
-                        <BsFilePost className="icon" size="36px" />
-                        <p className="icon-pharagraph">https://velog.io/@jwisgenius</p>
-                    </a>
+                    <span className="contact-icon text">
+                        <a
+                            className="icon-wrapper"
+                            rel="noreferrer"
+                            href="https://github.com/jaewoong2"
+                            target="_blank"
+                        >
+                            <FiGithub className="icon" size="36px" />
+                            <p className="icon-pharagraph">https://github.com/jaewoong2</p>
+                        </a>
+                    </span>
+                    <span className="contact-icon text">
+                        <a
+                            className="icon-wrapper"
+                            rel="noreferrer"
+                            href="https://velog.io/@jwisgenius"
+                            target="_blank"
+                        >
+                            <BsFilePost className="icon" size="36px" />
+                            <p className="icon-pharagraph">https://velog.io/@jwisgenius</p>
+                        </a>
+                    </span>
                 </Contact>
             </div>
         </Container>

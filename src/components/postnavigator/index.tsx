@@ -3,10 +3,10 @@ import React from 'react';
 import { LinkRightWrapper, LinkLeftWrapper } from './styles';
 
 interface IpostNavigatorProps {
-    slug: string | boolean;
+    slug: string;
     left: boolean;
     right: boolean;
-    title: boolean | string;
+    title: string;
 }
 
 const PostNavigator: React.VFC<IpostNavigatorProps> = ({ title = '', slug = '', left }) => {
@@ -14,8 +14,8 @@ const PostNavigator: React.VFC<IpostNavigatorProps> = ({ title = '', slug = '', 
         return slug ? (
             <LinkLeftWrapper>
                 <span className="text placeholder">{'Previous'}</span>
-                <Link className="link-title" to={slug && slug !== true ? slug : '/'}>
-                    {title && title != true ? (title.length > 20 ? title.slice(0, 20) + '...' : title) : ''}
+                <Link className="link-title" to={slug}>
+                    {title ? (title.length > 20 ? title.slice(0, 20) + '...' : title) : ''}
                 </Link>
             </LinkLeftWrapper>
         ) : (
@@ -29,8 +29,8 @@ const PostNavigator: React.VFC<IpostNavigatorProps> = ({ title = '', slug = '', 
     return slug ? (
         <LinkRightWrapper>
             <span className="text placeholder">{'Next'}</span>
-            <Link className="link-title" to={slug && slug !== true ? slug : '/'}>
-                {title && title != true ? (title.length > 20 ? title.slice(0, 20) + '...' : title) : ''}
+            <Link className="link-title" to={slug}>
+                {title ? (title.length > 20 ? title.slice(0, 20) + '...' : title) : ''}
             </Link>
         </LinkRightWrapper>
     ) : (

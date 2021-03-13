@@ -38,7 +38,7 @@ const MainComponent: React.FC = ({ children }) => {
             }
         }
     `);
-
+    const isDevelopment = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development';
     return (
         <MainContainer>
             <ReactHelmet
@@ -51,11 +51,16 @@ const MainComponent: React.FC = ({ children }) => {
                 <HeadNav
                     setIsDarkMode={setIsDarkMode}
                     isDarkMode={isDarkMode}
-                    headers={['tsl', 'dev', 'algorithm', 'about']}
+                    headers={['til', 'dev', 'algorithm', 'about']}
                 />
                 <div className="section-container">
                     <SideSection>
-                        <Introduce imageSrc={data?.allImageSharp?.edges[0]?.node?.fluid?.src} />
+                        <Introduce
+                            imageSrc={
+                                `${isDevelopment === 'development' ? '' : '/woongs-world'}` +
+                                data?.allImageSharp?.edges[0]?.node?.fluid?.src
+                            }
+                        />
                     </SideSection>
                     <MainSection>{children}</MainSection>
                 </div>

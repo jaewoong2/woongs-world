@@ -16,6 +16,7 @@ const Section = styled.section`
     .title {
         padding-bottom: 10px;
         position: relative;
+        margin-bottom: 30px;
         h1 {
             margin-bottom: 3px;
         }
@@ -38,6 +39,15 @@ const Section = styled.section`
         font-size: 0.825em;
         color: ${({ theme }) => theme.color.dark};
         padding: 5px;
+        blockquote {
+            background-color: ${({ theme }) =>
+                theme.isDarkMode ? 'rgba(188, 188, 188, 0.125)' : 'rgba(20, 20, 20, 0.125)'};
+            border-color: ${({ theme }) => (theme.isDarkMode ? theme.color.yellow : theme.color.purple)};
+            p {
+                padding: 7px;
+                padding-left: 0;
+            }
+        }
         p {
             color: ${({ theme }) => theme.color.dark} !important;
             padding-left: 5px;
@@ -108,11 +118,11 @@ type makrDownRemarkType = {
 
 interface dataType extends CreatePagesArgs {
     pageContext: {
-        next: false | string;
-        previous: false | string;
+        next: string;
+        previous: string;
         slug: string;
-        nextTitle: boolean | string;
-        previousTitle: boolean | string;
+        nextTitle: string;
+        previousTitle: string;
     };
     data: {
         markdownRemark: makrDownRemarkType;

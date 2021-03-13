@@ -87,6 +87,7 @@ export const Contact = styled.section`
     align-items: center;
     margin-top: 15px;
     margin-left: 10px;
+
     @media screen and (max-width: 1050px) and (min-width: 450px) {
         font-size: 0.85em;
         flex-direction: column;
@@ -100,15 +101,20 @@ export const Contact = styled.section`
         justify-content: space-evenly;
         text-decoration: none;
         color: ${({ theme }) => theme.color.dark};
+
         .icon-pharagraph {
             margin: 0;
             padding: 0;
             display: none;
         }
+
         @media screen and (max-width: 1050px) and (min-width: 450px) {
             font-size: 0.85em;
             justify-content: center;
             flex-direction: row;
+            .icon-wrapper {
+                display: flex;
+            }
             .icon-pharagraph {
                 display: block;
             }

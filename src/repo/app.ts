@@ -1,6 +1,22 @@
 export function getInitialProps(): boolean {
     const isDark = typeof window !== 'undefined' ? window.localStorage?.getItem('isDarkMode') : null;
+    if (isDark === null) {
+        if (typeof window !== 'undefined') {
+            const mql = window?.matchMedia('(prefers-color-scheme: dark)');
+            const hasMediaQueryPreference = typeof mql.matches === 'boolean';
+            if (hasMediaQueryPreference) {
+                setThemeProps(mql.matches ? true : false);
+                return mql.matches ? true : false;
+            }
+        }
+    }
     return isDark !== null ? JSON.parse(isDark).value : false;
+}
+
+export function setThemeProps(isDarkMode: boolean): void {
+    if (typeof window !== 'undefined') {
+        window.localStorage?.setItem('isDarkMode', JSON.stringify({ value: isDarkMode }));
+    }
 }
 
 export const MainInfos: {

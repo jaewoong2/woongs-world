@@ -52,11 +52,10 @@ exports.createPages = ({ graphql, actions }) => {
                     context: {
                         // Data passed to context is available in page queries as GraphQL variables.
                         slug: node.fields.slug,
-                        next: idx === result.data.allMarkdownRemark.edges.length - 1 ? false : next.fields.slug,
-                        nextTitle:
-                            idx === result.data.allMarkdownRemark.edges.length - 1 ? false : next.frontmatter.title,
-                        previous: idx === 0 ? false : previous.fields.slug,
-                        previousTitle: idx === 0 ? false : previous.frontmatter.title,
+                        next: idx === result.data.allMarkdownRemark.edges.length - 1 ? '' : next.fields.slug,
+                        nextTitle: idx === result.data.allMarkdownRemark.edges.length - 1 ? '' : next.frontmatter.title,
+                        previous: idx === 0 ? '' : previous.fields.slug,
+                        previousTitle: idx === 0 ? '' : previous.frontmatter.title,
                     },
                 });
             });

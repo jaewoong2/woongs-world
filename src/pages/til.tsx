@@ -4,8 +4,7 @@ import Lists from '../components/lists';
 import MainComponent from '../templates/Layout';
 import { ImdProps } from '../utils/type';
 
-const Tsl: React.VFC<ImdProps> = ({ data }) => {
-    console.log(data);
+const Til: React.VFC<ImdProps> = ({ data }) => {
     return (
         <MainComponent>
             <section>
@@ -23,12 +22,12 @@ const Tsl: React.VFC<ImdProps> = ({ data }) => {
     );
 };
 
-export default Tsl;
+export default Til;
 
 export const query = graphql`
     query {
         allMarkdownRemark(
-            filter: { frontmatter: { folder: { eq: "tsl" } } }
+            filter: { frontmatter: { folder: { eq: "til" } } }
             sort: { fields: [frontmatter___date], order: DESC }
         ) {
             totalCount
