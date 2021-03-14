@@ -20,16 +20,19 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         font-family: "Roboto", "Noto Sans KR", sans-serif;
         padding: 0;
+        border-color: ${({ theme }) => theme.color.border} !important;
     }
+
+    .represent-color {
+        color: ${({ theme }) => theme.color.representativeColor} !important;
+    }
+
     h1,
     h2,
     h3,
     h4 {
         font-family: "Roboto", "Noto Sans KR";
         font-weight: 300;
-    }
-    p {
-        /* animation: ${loadAnimation} 0.5s linear; */
     }
 
     .text {
@@ -42,7 +45,7 @@ const GlobalStyle = createGlobalStyle`
     }
  
     html {
-        transition: background-color 0.5s linear, color 0.5s linear;
+        transition: background-color 0.35s linear, color 0.35s linear;
         background-color: ${({ theme }) => theme.color.primary};
         @media screen and (max-width: 450px) {
             font-size: 13px;

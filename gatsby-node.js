@@ -44,16 +44,16 @@ exports.createPages = ({ graphql, actions }) => {
                     }
                 }
             }
-        `).then(result => {
-            result.data.allMarkdownRemark.edges.map(({ node, next, previous }, idx) => {
+        `).then(({ data }) => {
+            data.allMarkdownRemark.edges.map(({ node, next, previous }, idx) => {
                 createPage({
                     path: node.fields.slug,
                     component: path.resolve(`./src/templates/blog-post.tsx`),
                     context: {
                         // Data passed to context is available in page queries as GraphQL variables.
                         slug: node.fields.slug,
-                        next: idx === result.data.allMarkdownRemark.edges.length - 1 ? '' : next.fields.slug,
-                        nextTitle: idx === result.data.allMarkdownRemark.edges.length - 1 ? '' : next.frontmatter.title,
+                        next: idx === data.allMarkdownRemark.edges.length - 1 ? '' : next.fields.slug,
+                        nextTitle: idx === data.allMarkdownRemark.edges.length - 1 ? '' : next.frontmatter.title,
                         previous: idx === 0 ? '' : previous.fields.slug,
                         previousTitle: idx === 0 ? '' : previous.frontmatter.title,
                     },

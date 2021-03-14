@@ -6,10 +6,12 @@ import { MainInfos } from '../repo/app';
 import MainComponent from '../templates/Layout';
 import { ImdProps } from '../utils/type';
 
-const Title = styled.div`
+const Title = styled.h3`
     font-size: 1.5em;
+    padding: 0;
+    margin-bottom: 5px;
+    font-weight: normal;
     margin-left: 10px;
-    color: ${({ theme }) => (theme.isDarkMode ? theme.color.yellow : theme.color.purple)};
     margin-top: 8px;
 `;
 
@@ -29,7 +31,7 @@ const Index: React.FC<ImdProps> = ({ data }) => {
             <section>
                 {MainInfos.map((info, idx) => (
                     <Fragment key={info.title + idx}>
-                        <Title className="text">{info?.title}</Title>
+                        <Title className="represent-color">{info?.title}</Title>
                         {info?.description && <Description className="text">- {info?.description}</Description>}
                         {info?.descriptions &&
                             info.descriptions.map(description => (
@@ -41,7 +43,7 @@ const Index: React.FC<ImdProps> = ({ data }) => {
                 ))}
             </section>
             <ListWrapper>
-                <Title className="text">Posts</Title>
+                <Title className="represent-color">Posts</Title>
                 {data?.allMarkdownRemark?.edges.map((edge, idx) => (
                     <Lists
                         tags={edge?.node?.frontmatter?.tags}

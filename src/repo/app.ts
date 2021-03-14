@@ -7,10 +7,14 @@ export function getInitialProps(): boolean {
             if (hasMediaQueryPreference) {
                 setThemeProps(mql.matches ? true : false);
                 return mql.matches ? true : false;
+            } else {
+                return false;
             }
+        } else {
+            return false;
         }
     }
-    return isDark !== null ? JSON.parse(isDark).value : false;
+    return JSON.parse(isDark).value;
 }
 
 export function setThemeProps(isDarkMode: boolean): void {

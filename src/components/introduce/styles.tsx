@@ -36,7 +36,7 @@ export const Container = styled.div`
                 padding: 0;
             }
             .one-line {
-                color: ${({ theme }) => (theme.isDarkMode ? theme.color.yellow : theme.color.purple)};
+                color: ${({ theme }) => theme.color.representativeColor};
             }
             p {
                 font-size: 0.87em;

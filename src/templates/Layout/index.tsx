@@ -39,6 +39,10 @@ const MainComponent: React.FC = ({ children }) => {
         }
     `);
     const isDevelopment = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development';
+    const imageSrc =
+        data?.allImageSharp?.edges[0]?.node?.fluid?.src.split('/')[0] === 'woongs-world'
+            ? data?.allImageSharp?.edges[0]?.node?.fluid?.src
+            : 'woongs-world' + data?.allImageSharp?.edges[0]?.node?.fluid?.src;
     return (
         <MainContainer>
             <ReactHelmet
@@ -56,10 +60,11 @@ const MainComponent: React.FC = ({ children }) => {
                 <div className="section-container">
                     <SideSection>
                         <Introduce
-                            imageSrc={
-                                `${isDevelopment === 'development' ? '' : '/woongs-world'}` +
-                                data?.allImageSharp?.edges[0]?.node?.fluid?.src
-                            }
+                            imageSrc={`${
+                                isDevelopment === 'development'
+                                    ? data?.allImageSharp?.edges[0]?.node?.fluid?.src
+                                    : imageSrc
+                            }`}
                         />
                     </SideSection>
                     <MainSection>{children}</MainSection>

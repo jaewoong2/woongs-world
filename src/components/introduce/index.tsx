@@ -16,7 +16,7 @@ const Introduce: React.VFC<{ imageSrc: string }> = ({ imageSrc }) => {
                 <div className="info-container">
                     <p className="name text">Lim Jaewoong</p>
                     <p className="univ text">SoongSil Univ.</p>
-                    <p className="one-line text">Dreaming FE Devloper</p>
+                    <p className="one-line represent-color">Dreaming FE Devloper</p>
                 </div>
                 <Contact>
                     <span className="contact-icon text">
