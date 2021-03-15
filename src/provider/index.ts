@@ -1,4 +1,5 @@
 import { createContext } from 'react';
+import { getInitialProps } from '../repo/app';
 
 interface ThemeContextTypes {
     isDarkMode: boolean;
@@ -6,7 +7,7 @@ interface ThemeContextTypes {
 }
 
 const initialState: ThemeContextTypes = {
-    isDarkMode: false,
+    isDarkMode: getInitialProps(),
     setIsDarkMode: () => true,
 };
 

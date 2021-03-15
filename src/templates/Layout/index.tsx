@@ -40,9 +40,9 @@ const MainComponent: React.FC = ({ children }) => {
     `);
     const isDevelopment = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development';
     const imageSrc =
-        data?.allImageSharp?.edges[0]?.node?.fluid?.src.split('/')[0] === 'woongs-world'
+        data?.allImageSharp?.edges[0]?.node?.fluid?.src.split('/')[1] === 'woongs-world'
             ? data?.allImageSharp?.edges[0]?.node?.fluid?.src
-            : 'woongs-world' + data?.allImageSharp?.edges[0]?.node?.fluid?.src;
+            : '/woongs-world' + data?.allImageSharp?.edges[0]?.node?.fluid?.src;
     return (
         <MainContainer>
             <ReactHelmet

@@ -5,7 +5,6 @@ export function getInitialProps(): boolean {
             const mql = window?.matchMedia('(prefers-color-scheme: dark)');
             const hasMediaQueryPreference = typeof mql.matches === 'boolean';
             if (hasMediaQueryPreference) {
-                setThemeProps(mql.matches ? true : false);
                 return mql.matches ? true : false;
             } else {
                 return false;

@@ -137,7 +137,7 @@ const BlogPost: React.FC<dataType> = ({ pageContext, data }) => {
         <MainComponent>
             <ReactHelmet
                 favicon={'https://jaewoong2.github.io/woongs-world/favicon.ico'}
-                keywords={post?.frontmatter?.description}
+                keywords={post?.frontmatter?.tags?.join(',')}
                 title={post?.frontmatter?.title}
                 description={post?.frontmatter?.description}
             />

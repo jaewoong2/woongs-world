@@ -36,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .text {
-        color: ${({ theme }) => theme.color.dark};
+        color: ${({ theme }) => theme.color.dark} !important;
     }
 
     a {
@@ -60,7 +60,6 @@ const GlobalStyle = createGlobalStyle`
         -moz-font-smoothing: antialiased;
         text-rendering: optimizelegibility;
     }
-
 `;
 
 export default React.memo(GlobalStyle);

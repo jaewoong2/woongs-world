@@ -8,7 +8,7 @@ module.exports = {
         title: '@JaeWoong2',
         author: 'JaeWoong Lim',
         description: 'prepare For FE developer',
-        siteUrl: 'https://jaewoong2.github.io/woongs-world/',
+        siteUrl: 'https://jaewoong2.github.io/',
     },
     pathPrefix: '/woongs-world',
     /* Your site config here */
@@ -27,7 +27,7 @@ module.exports = {
         {
             resolve: `gatsby-plugin-robots-txt`,
             options: {
-                host: `https://jaewoong2.github.io/woongs-world/`,
+                host: `https://jaewoong2.github.io/`,
                 sitemap: `https://jaewoong2.github.io/woongs-world/sitemap.xml`,
                 poilcy: [{ userAgent: '*', allow: '/' }],
             },
