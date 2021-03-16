@@ -34,7 +34,9 @@ const GlobalStyle = createGlobalStyle`
         font-family: "Roboto", "Noto Sans KR";
         font-weight: 300;
     }
-
+    .markdown-wrapper {
+        color: ${({ theme }) => theme.color.dark};
+    }
     .text {
         color: ${({ theme }) => theme.color.dark} !important;
     }

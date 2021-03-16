@@ -102,10 +102,6 @@ const CommentWrppaer = styled.div`
         top: 0;
         left: 4%;
     }
-    /* background-color: ${({ theme }) => (theme.isDarkMode ? theme.color.whiteDarker : theme.color.white)}; */
-    /* * {
-        color: ${({ theme }) => theme.color.black} !important;
-    } */
 `;
 
 type makrDownRemarkType = {

@@ -1,17 +1,7 @@
 export function getInitialProps(): boolean {
     const isDark = typeof window !== 'undefined' ? window.localStorage?.getItem('isDarkMode') : null;
     if (isDark === null) {
-        if (typeof window !== 'undefined') {
-            const mql = window?.matchMedia('(prefers-color-scheme: dark)');
-            const hasMediaQueryPreference = typeof mql.matches === 'boolean';
-            if (hasMediaQueryPreference) {
-                return mql.matches ? true : false;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
+        return false;
     }
     return JSON.parse(isDark).value;
 }

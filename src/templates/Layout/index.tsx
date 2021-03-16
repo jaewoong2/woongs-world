@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import Footer from '../../components/footer';
 import Introduce from '../../components/introduce';
 import DarkThemeContext from '../../provider';
@@ -38,11 +38,15 @@ const MainComponent: React.FC = ({ children }) => {
             }
         }
     `);
-    const isDevelopment = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development';
-    const imageSrc =
-        data?.allImageSharp?.edges[0]?.node?.fluid?.src.split('/')[1] === 'woongs-world'
-            ? data?.allImageSharp?.edges[0]?.node?.fluid?.src
-            : '/woongs-world' + data?.allImageSharp?.edges[0]?.node?.fluid?.src;
+    const imageSrc = useMemo(() => {
+        if (process?.env?.GATSBY_ACTIVE_ENV || process?.env?.NODE_ENV || 'development' === 'development') {
+            return data?.allImageSharp?.edges[0]?.node?.fluid?.src;
+        } else {
+            return data?.allImageSharp?.edges[0]?.node?.fluid?.src.split('/')[1] === 'woongs-world'
+                ? data?.allImageSharp?.edges[0]?.node?.fluid?.src
+                : '/woongs-world' + data?.allImageSharp?.edges[0]?.node?.fluid?.src;
+        }
+    }, [process, data]);
     return (
         <MainContainer>
             <ReactHelmet
@@ -59,13 +63,7 @@ const MainComponent: React.FC = ({ children }) => {
                 />
                 <div className="section-container">
                     <SideSection>
-                        <Introduce
-                            imageSrc={`${
-                                isDevelopment === 'development'
-                                    ? data?.allImageSharp?.edges[0]?.node?.fluid?.src
-                                    : imageSrc
-                            }`}
-                        />
+                        <Introduce imageSrc={imageSrc} />
                     </SideSection>
                     <MainSection>{children}</MainSection>
                 </div>

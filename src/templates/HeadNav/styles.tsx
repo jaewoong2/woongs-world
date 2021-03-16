@@ -36,6 +36,7 @@ export const HeaderNav = styled.nav`
                 fill-opacity: ${({ theme }) => theme.isDarkMode && 0};
                 transition: fill-opacity 0.6s, color 0.9s;
             }
+
             &:hover {
                 color: ${({ theme }) => (theme.isDarkMode ? theme.color.white : theme.color.purple)};
                 path {
@@ -68,7 +69,6 @@ export const HeadTitle = styled.p`
 
     &:hover {
         opacity: 65%;
-        /* color: ${({ theme }) => theme.color.hoverColor}; */
         transition: opacity 0.35s;
     }
     transition: opacity 0.35s;

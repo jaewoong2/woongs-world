@@ -35,9 +35,7 @@ export const Container = styled.div`
                 margin: 0;
                 padding: 0;
             }
-            .one-line {
-                color: ${({ theme }) => theme.color.representativeColor};
-            }
+
             p {
                 font-size: 0.87em;
                 margin-left: 10px;
