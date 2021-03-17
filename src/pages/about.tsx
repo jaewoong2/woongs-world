@@ -35,23 +35,27 @@ const Paragraph = styled.p`
     font-family: 'DotGothic16', 'source sans pro', sans-serif;
 `;
 
-const randomState = ['hard-working', 'pleasing', 'self-confidence', 'fast-comprehension'];
+const randomState = [
+    'a hard-working person',
+    'self-confidence person for what i do',
+    'person who have fast-comprehension for new-thing',
+];
 const About: React.FC<AboutPageProps> = () => {
-    const [state, setState] = useState<string>('passion');
+    const [state, setState] = useState<string>('Wanting be a Developer');
 
     useEffect(() => {
         const timer = setInterval(() => {
             setState(prev => {
                 return randomState[(randomState.indexOf(prev) + 1) % randomState.length];
             });
-        }, 2500);
+        }, 2200);
 
         return () => clearInterval(timer);
     }, []);
 
     return (
         <MainComponent>
-            <Paragraph className="text">I am a {`{${state}}`} person</Paragraph>
+            <Paragraph className="text">I am {`{${state}}`}</Paragraph>
         </MainComponent>
     );
 };

@@ -24,9 +24,9 @@ const HeadNav: VFC<IHeaderProps> = ({ headers, isDarkMode, setIsDarkMode }) => {
                 ))}
                 <div className="button-wrapper">
                     {isDarkMode ? (
-                        <IoMoonOutline onClick={() => setIsDarkMode(!isDarkMode)} />
+                        <IoMoonOutline className="moon icon" onClick={() => setIsDarkMode(!isDarkMode)} />
                     ) : (
-                        <RiSunLine onClick={() => setIsDarkMode(!isDarkMode)} />
+                        <RiSunLine className="sun icon" onClick={() => setIsDarkMode(!isDarkMode)} />
                     )}
                     {/* {<ToggleButton onClick={() => setIsDarkMode(!isDarkMode)} className={isDarkMode ? 'dark' : ''} />} */}
                 </div>

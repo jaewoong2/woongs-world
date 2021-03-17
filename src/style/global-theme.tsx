@@ -22,23 +22,11 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         border-color: ${({ theme }) => theme.color.border} !important;
     }
-
-    .represent-color {
-        color: ${({ theme }) => theme.color.representativeColor} !important;
-    }
-
     h1,
     h2,
     h3,
     h4 {
-        font-family: "Roboto", "Noto Sans KR";
         font-weight: 300;
-    }
-    .markdown-wrapper {
-        color: ${({ theme }) => theme.color.dark};
-    }
-    .text {
-        color: ${({ theme }) => theme.color.dark} !important;
     }
 
     a {
@@ -62,6 +50,33 @@ const GlobalStyle = createGlobalStyle`
         -moz-font-smoothing: antialiased;
         text-rendering: optimizelegibility;
     }
+
+    /* for Dark THEME */
+
+    .icon {
+        path {
+            fill: ${({ theme }) => theme.isDarkMode && theme.color.yellow};
+            fill-opacity: ${({ theme }) => theme.isDarkMode && 0};
+        }
+
+        &:hover {
+            color: ${({ theme }) => (theme.isDarkMode ? theme.color.white : theme.color.purple)};
+        }
+    }
+
+    .represent-color {
+        color: ${({ theme }) => theme.color.representativeColor} !important;
+    }
+
+    .markdown-wrapper {
+        color: ${({ theme }) => theme.color.dark};
+    }
+    
+    .text {
+        color: ${({ theme }) => theme.color.dark} !important;
+    }
+
+
 `;
 
 export default React.memo(GlobalStyle);

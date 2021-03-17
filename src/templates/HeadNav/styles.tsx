@@ -24,7 +24,7 @@ export const HeaderNav = styled.nav`
         align-items: center;
         color: inherit;
 
-        svg {
+        .icon {
             cursor: pointer;
             color: inherit;
             transform: rotate(270deg);
@@ -44,18 +44,6 @@ export const HeaderNav = styled.nav`
                     transition: fill-opacity 0.6s;
                 }
                 transition: color 0.5s;
-            }
-        }
-
-        .dark {
-            &::after {
-                background-color: ${({ theme }) => theme.color.purple};
-                transform: translateX(23px);
-            }
-            @media screen and (max-width: 500px) {
-                &::after {
-                    transform: translateX(23px);
-                }
             }
         }
     }
