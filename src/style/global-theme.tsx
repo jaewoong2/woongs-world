@@ -1,32 +1,20 @@
-import { createGlobalStyle, keyframes } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import React from 'react';
-export const loadAnimation = keyframes`
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-`;
-
-export const graphAnimation = keyframes`
-  from {
-    width: 0;
-  }
-`;
 
 const GlobalStyle = createGlobalStyle`
     * {
         margin: 0;
-        font-family: "Roboto", "Noto Sans KR", sans-serif;
         padding: 0;
+        font-family: "Roboto", "Noto Sans KR", sans-serif;
         border-color: ${({ theme }) => theme.color.border} !important;
     }
+
     h1,
     h2,
     h3,
     h4 {
         font-weight: 300;
+        font-family: "Roboto", "Noto Sans KR", sans-serif;
     }
 
     a {
@@ -53,7 +41,7 @@ const GlobalStyle = createGlobalStyle`
 
     /* for Dark THEME */
 
-    .icon {
+    .icon-svg {
         path {
             fill: ${({ theme }) => theme.isDarkMode && theme.color.yellow};
             fill-opacity: ${({ theme }) => theme.isDarkMode && 0};

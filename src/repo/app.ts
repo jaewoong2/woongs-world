@@ -27,6 +27,6 @@ export const MainInfos: {
     },
     {
         title: 'What',
-        descriptions: ['Web FE', 'Python for Coiding test', 'C++ for Major', 'C#, Java For Noraml Course'],
+        descriptions: ['Web FE', 'Python For Coiding test', 'C++ for Major', 'C#, Java For Noraml Course'],
     },
 ];

@@ -3,7 +3,6 @@ title: "[프로그래머스 LV3] 순위"
 date: "2021-03-17"
 folder: "algorithm"
 tags: ["파이썬", "알고리즘", "algorithm", "python"]
-featuredImage: ../pages/md/algorithm/rank.jpg
 ---
 
 [![문제 설명](./rank.jpg)](https://programmers.co.kr/learn/courses/30/lessons/49191)

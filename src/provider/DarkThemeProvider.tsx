@@ -3,7 +3,7 @@ import { getInitialProps, setThemeProps } from '../repo/app';
 import DarkThemeContext from './index';
 
 const DarkThemeProvider: React.FC = ({ children }) => {
-    const [isDarkMode, setIsDarkMode] = useState(getInitialProps());
+    const [isDarkMode, setIsDarkMode] = useState<boolean>(getInitialProps());
 
     const setIsDarkModeHandler = useCallback(
         (value: boolean) => {
@@ -16,7 +16,7 @@ const DarkThemeProvider: React.FC = ({ children }) => {
     return (
         <DarkThemeContext.Provider
             value={{
-                isDarkMode: isDarkMode,
+                isDarkMode,
                 setIsDarkMode: setIsDarkModeHandler,
             }}
         >

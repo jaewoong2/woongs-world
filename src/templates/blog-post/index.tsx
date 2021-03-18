@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { CreatePagesArgs, graphql } from 'gatsby';
 import styled, { useTheme } from 'styled-components';
-import MainComponent from './Layout';
-import ReactHelmet from './ReactHelmet';
-import Utterances from '../components/utterances';
-import PostNavigator from '../components/postnavigator';
-import { Tag } from '../components/lists/styles';
+import MainComponent from '../Layout';
+import ReactHelmet from '../ReactHelmet';
+import Utterances from '../../components/utterances';
+import PostNavigator from '../../components/postnavigator';
+import { Tag } from '../../components/lists/styles';
 
 const Section = styled.section`
     padding: 20px;
@@ -39,6 +39,7 @@ const Section = styled.section`
         font-size: 0.825em;
         color: ${({ theme }) => theme.color.dark};
         padding: 5px;
+
         blockquote {
             background-color: ${({ theme }) =>
                 theme.isDarkMode ? 'rgba(188, 188, 188, 0.125)' : 'rgba(20, 20, 20, 0.125)'};
@@ -48,13 +49,15 @@ const Section = styled.section`
                 padding-left: 0;
             }
         }
+
         p {
             color: ${({ theme }) => theme.color.dark} !important;
             padding-left: 5px;
         }
-        h3,
+
         h1,
         h2,
+        h3,
         h4 {
             padding: 0;
             padding-top: 3px;

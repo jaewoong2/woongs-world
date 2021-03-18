@@ -6,6 +6,7 @@ export const MainContainer = styled.main`
     justify-content: center;
     position: relative;
     padding: 3px;
+
     .main-container {
         margin-top: 10px;
         width: 67%;

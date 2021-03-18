@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import React, { useContext, useEffect, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import Footer from '../../components/footer';
 import Introduce from '../../components/introduce';
 import DarkThemeContext from '../../provider';
@@ -38,6 +38,7 @@ const MainComponent: React.FC = ({ children }) => {
             }
         }
     `);
+    // Server Side Rendering => process.env 가 정확히 안읽혀서 useMemo로 상태변화에 유이하게 설정
     const imageSrc = useMemo(() => {
         if (process?.env?.GATSBY_ACTIVE_ENV || process?.env?.NODE_ENV || 'development' === 'development') {
             return data?.allImageSharp?.edges[0]?.node?.fluid?.src;

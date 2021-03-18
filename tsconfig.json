@@ -10,9 +10,11 @@
     "strict": true,
     "noEmit": false,
     "isolatedModules": true,
+    "declaration": true,
+    "declarationDir": "./src/utils",
     "esModuleInterop": true,
     "allowJs": true,
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "typography.d.ts"],
   "exclude": ["node_modules", "public", ".cache"]
 }

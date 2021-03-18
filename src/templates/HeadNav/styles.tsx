@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderNav = styled.nav`
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     height: 2.8em;
     border-bottom: 2.3px solid;
@@ -24,7 +24,7 @@ export const HeaderNav = styled.nav`
         align-items: center;
         color: inherit;
 
-        .icon {
+        .icon-svg {
             cursor: pointer;
             color: inherit;
             transform: rotate(270deg);

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { rhythm } from '../../utils/typography';
 
 export const Container = styled.div`
     padding: 10px;
@@ -18,7 +17,7 @@ export const Container = styled.div`
 
     .post-title {
         display: initial;
-        margin-bottom: ${rhythm(1 / 9)};
+        margin-bottom: 11px;
         &:hover {
             opacity: 0.65;
             transition: opacity 0.25s;

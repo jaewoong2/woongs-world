@@ -58,8 +58,8 @@ export const Container = styled.div`
             padding: 15px;
             width: auto;
             height: auto;
-            max-width: 150px;
-            max-height: 150px;
+            max-width: 140px;
+            max-height: 140px;
             border-radius: 50%;
 
             @media screen and (max-width: 1050px) {
@@ -119,7 +119,7 @@ export const Contact = styled.section`
         }
 
         svg {
-            color: ${({ theme }) => theme.color.dark};
+            color: ${({ theme }) => theme.color.dark} !important;
             min-width: 15px;
             min-height: 15px;
             max-width: 20px;

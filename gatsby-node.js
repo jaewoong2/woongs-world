@@ -44,7 +44,7 @@ exports.createPages = ({ graphql, actions }) => {
                     }
                 }
             }
-        `).then(({ data }) => {
+        `).then(({ data: data }) => {
             data.allMarkdownRemark.edges.map(({ node, next, previous }, idx) => {
                 createPage({
                     path: node.fields.slug,

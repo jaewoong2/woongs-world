@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /**
  * Configure your Gatsby site with this file.
  *
@@ -73,7 +74,6 @@ module.exports = {
                 pathToConfigModule: 'src/utils/typography',
             },
         },
-        `gatsby-plugin-fontawesome-css`,
         {
             resolve: `gatsby-plugin-google-fonts`,
             options: {
