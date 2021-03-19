@@ -156,7 +156,7 @@ const BlogPost: React.FC<dataType> = ({ pageContext, data }) => {
             <CommentWrppaer>
                 <Utterances
                     repo={'jaewoong2/blog-comment'}
-                    theme={styledTheme.isDarkMode ? 'github-dark' : 'github-light'}
+                    theme={styledTheme?.isDarkMode ? 'github-dark' : 'github-light'}
                 />
             </CommentWrppaer>
         </MainComponent>

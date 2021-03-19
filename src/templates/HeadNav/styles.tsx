@@ -32,13 +32,10 @@ export const HeaderNav = styled.nav`
             height: 1.45em;
             transition: color 0.5s;
             path {
-                fill: ${({ theme }) => theme.isDarkMode && theme.color.yellow};
-                fill-opacity: ${({ theme }) => theme.isDarkMode && 0};
                 transition: fill-opacity 0.6s, color 0.9s;
             }
 
             &:hover {
-                color: ${({ theme }) => (theme.isDarkMode ? theme.color.white : theme.color.purple)};
                 path {
                     fill-opacity: 1;
                     transition: fill-opacity 0.6s;

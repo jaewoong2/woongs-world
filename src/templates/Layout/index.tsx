@@ -48,6 +48,7 @@ const MainComponent: React.FC = ({ children }) => {
                 : '/woongs-world' + data?.allImageSharp?.edges[0]?.node?.fluid?.src;
         }
     }, [process, data]);
+
     return (
         <MainContainer>
             <ReactHelmet

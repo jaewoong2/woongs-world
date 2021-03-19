@@ -4,6 +4,7 @@ import DarkThemeContext from './index';
 
 const DarkThemeProvider: React.FC = ({ children }) => {
     const [isDarkMode, setIsDarkMode] = useState<boolean>(getInitialProps());
+    const [isStyleSet, setIsStyleSet] = useState<boolean>(false);
 
     const setIsDarkModeHandler = useCallback(
         (value: boolean) => {
@@ -13,9 +14,15 @@ const DarkThemeProvider: React.FC = ({ children }) => {
         [setThemeProps],
     );
 
+    const setIsStyleSetHandler = useCallback((bool: boolean) => {
+        setIsStyleSet(bool);
+    }, []);
+
     return (
         <DarkThemeContext.Provider
             value={{
+                isStyleSet,
+                setIsStyleSetHandler,
                 isDarkMode,
                 setIsDarkMode: setIsDarkModeHandler,
             }}

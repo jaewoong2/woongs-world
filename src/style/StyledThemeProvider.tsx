@@ -1,9 +1,10 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import DarkThemeContext from '../provider';
 
 const StyledThemeProvider: React.FC = ({ children }) => {
     const { isDarkMode } = useContext(DarkThemeContext);
+
     const color = {
         white: 'rgb(250, 250, 250)',
         black: 'rgb(30, 31, 33, 0.94)',
@@ -14,7 +15,7 @@ const StyledThemeProvider: React.FC = ({ children }) => {
 
     const theme: DefaultTheme = useMemo(
         () => ({
-            isDarkMode: isDarkMode,
+            isDarkMode,
             color: {
                 ...color,
                 representativeColor: isDarkMode ? color.yellow : color.purple,
