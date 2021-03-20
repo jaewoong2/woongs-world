@@ -41,4 +41,4 @@ const PostNavigator: React.VFC<IpostNavigatorProps> = ({ title = '', slug = '', 
     );
 };
 
-export default PostNavigator;
+export default React.memo(PostNavigator);

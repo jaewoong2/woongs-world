@@ -11,6 +11,10 @@ interface ThemeContextTypes {
 const initialState: ThemeContextTypes = {
     isDarkMode: getInitialProps(),
     setIsDarkMode: () => true,
+
+    // For Server Side Rendering
+    // false => don't have global-style
+    // true => have global-style
     isStyleSet: false,
     setIsStyleSetHandler: () => true,
 };

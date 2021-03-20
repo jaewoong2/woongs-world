@@ -30,4 +30,4 @@ const Lists: React.VFC<ListsProps> = ({ title, slug, date, tags }) => {
     );
 };
 
-export default Lists;
+export default React.memo(Lists);

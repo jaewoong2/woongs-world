@@ -47,4 +47,4 @@ const Introduce: React.VFC<{ imageSrc: string }> = ({ imageSrc }) => {
     );
 };
 
-export default Introduce;
+export default React.memo(Introduce);

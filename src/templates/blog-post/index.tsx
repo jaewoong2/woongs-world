@@ -40,6 +40,39 @@ const Section = styled.section`
         color: ${({ theme }) => theme.color.dark};
         padding: 5px;
 
+        code[class*='language-text'] {
+            position: relative;
+            font-size: 0.85em;
+            z-index: 3;
+            font-family: 'Noto Sans KR';
+            background: transparent;
+            color: ${({ theme }) => (theme.isDarkMode ? theme.color.white : '#657b83')};
+            &::before {
+                content: '';
+                transform: rotate(-2deg);
+                position: absolute;
+                bottom: 0.3em;
+                left: 0;
+                width: 100%;
+                height: 0.7em;
+                border-radius: 5px;
+                background-color: ${({ theme }) => (theme.isDarkMode ? theme.color.purple : '#fdf6e3')};
+                z-index: -1;
+            }
+        }
+
+        hr {
+            background: ${({ theme }) => theme.color.dark};
+            height: 1px;
+            opacity: 0.5;
+        }
+
+        pre {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            background-color: ${({ theme }) => theme.color.primary};
+        }
+
         blockquote {
             background-color: ${({ theme }) =>
                 theme.isDarkMode ? 'rgba(188, 188, 188, 0.125)' : 'rgba(20, 20, 20, 0.125)'};
@@ -62,11 +95,6 @@ const Section = styled.section`
             padding: 0;
             padding-top: 3px;
             color: inherit;
-        }
-        pre {
-            margin-top: 30px;
-            margin-bottom: 30px;
-            background-color: ${({ theme }) => theme.color.primary};
         }
 
         @media screen and (max-width: 450px) {
@@ -163,7 +191,7 @@ const BlogPost: React.FC<dataType> = ({ pageContext, data }) => {
     );
 };
 
-export default BlogPost;
+export default React.memo(BlogPost);
 
 export const query = graphql`
     query($slug: String!) {

@@ -13,4 +13,4 @@ const ElementContainer: React.VFC<IelementCotainer> = ({ element }) => {
     return <>{isStyleSet && defaultTheme !== null && element}</>;
 };
 
-export default ElementContainer;
+export default React.memo(ElementContainer);

@@ -36,4 +36,4 @@ const ReactHelmet: React.VFC<IhelmetProps> = ({ keywords, description, title, fa
         </Helmet>
     );
 };
-export default ReactHelmet;
+export default React.memo(ReactHelmet);

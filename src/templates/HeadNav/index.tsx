@@ -35,4 +35,4 @@ const HeadNav: VFC<IHeaderProps> = ({ headers, isDarkMode, setIsDarkMode }) => {
     );
 };
 
-export default HeadNav;
+export default React.memo(HeadNav);

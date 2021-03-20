@@ -5,7 +5,7 @@ folder: "algorithm"
 tags: ["파이썬", "알고리즘", "algorithm", "python"]
 ---
 
-[![문제 설명](./rank.jpg)](https://programmers.co.kr/learn/courses/30/lessons/49191)
+[![문제 설명](./images/rank.jpg)](https://programmers.co.kr/learn/courses/30/lessons/49191)
 
 ## 풀이방법
  - return 해야하는 수: 정확하게 순위를 매길 수 있는 선수의 수

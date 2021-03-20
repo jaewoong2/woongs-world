@@ -32,4 +32,4 @@ const DarkThemeProvider: React.FC = ({ children }) => {
     );
 };
 
-export default DarkThemeProvider;
+export default React.memo(DarkThemeProvider);
