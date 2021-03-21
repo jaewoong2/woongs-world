@@ -14,6 +14,7 @@ module.exports = {
     pathPrefix: '/woongs-world',
     /* Your site config here */
     plugins: [
+        `gatsby-plugin-catch-links`,
         {
             resolve: `gatsby-plugin-gtag`,
             options: {
