@@ -20,7 +20,7 @@ const Lists: React.VFC<ListsProps> = ({ title, slug, date, tags }) => {
                 </Link>
                 {/* </OutboundLink> */}
                 <h4 className="post-date text">: {date}</h4>
-                <div>
+                <div className="tag-wrapper">
                     {tags?.map(tag => (
                         <Tag key={tag}>{tag}</Tag>
                     ))}

@@ -1,11 +1,11 @@
 ---
-title: "[프로그래머스 LV3] 디스크 컨트롤러"
-date: "2021-03-20"
+title: "[프로그래머스 LV3] 단어변환"
+date: "2021-03-22"
 folder: "algorithm"
-tags: ["파이썬", "알고리즘", "algorithm", "python", "힙", "heap"]
+tags: ["파이썬", "알고리즘", "algorithm", "python", "DFS", "그래프"]
 ---
 
-[![문제설명](./images/word-change.jpg)](https://programmers.co.kr/learn/courses/30/lessons/43163)
+[![문제설명](./images/wordChange.jpg)](https://programmers.co.kr/learn/courses/30/lessons/43163)
 
 ## 접근방법
  1. 서로 다른 알파벳의 갯수가 1개일 때, 현재 탐색하는 단어를 그 단어로 바꾸고, 다음 단어를 확인한다. `(재귀 함수 사용)`

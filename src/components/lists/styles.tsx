@@ -48,7 +48,6 @@ export const Title = styled.h1`
 
 export const Tag = styled.code`
     font-size: 0.85em;
-    /* width: 100%; */
     font-family: 'Roboto';
     border-radius: 4px;
     padding: 4px 6px 4px 6px;
