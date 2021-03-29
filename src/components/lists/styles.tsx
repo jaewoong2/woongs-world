@@ -51,6 +51,7 @@ export const Tag = styled.code`
     font-family: 'Roboto';
     border-radius: 4px;
     padding: 4px 6px 4px 6px;
+    cursor: pointer;
     overflow: hidden;
     background-color: ${({ theme }) => theme.color.tagColor};
     margin-right: 2px;

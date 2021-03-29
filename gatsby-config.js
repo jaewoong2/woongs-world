@@ -42,6 +42,7 @@ module.exports = {
                 path: `${__dirname}/src/`,
             },
         },
+        'gatsby-plugin-use-query-params',
         {
             resolve: `gatsby-transformer-remark`,
             options: {

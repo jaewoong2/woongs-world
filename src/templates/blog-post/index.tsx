@@ -1,5 +1,5 @@
 import React from 'react';
-import { CreatePagesArgs, graphql } from 'gatsby';
+import { CreatePagesArgs, graphql, Link } from 'gatsby';
 import styled, { useTheme } from 'styled-components';
 import MainComponent from '../Layout';
 import ReactHelmet from '../ReactHelmet';
@@ -172,7 +172,9 @@ const BlogPost: React.FC<dataType> = ({ pageContext, data }) => {
                 <div className="title text">
                     <h1 className="text">{post?.frontmatter.title}</h1>
                     {post?.frontmatter?.tags?.map(tag => (
-                        <Tag key={tag}>{tag}</Tag>
+                        <Link key={tag} to={`/tags?tag=${tag}`}>
+                            <Tag>{tag}</Tag>
+                        </Link>
                     ))}
                 </div>
                 <div className="markdown-wrapper" dangerouslySetInnerHTML={{ __html: post?.html ? post?.html : '' }} />

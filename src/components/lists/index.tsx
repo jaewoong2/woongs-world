@@ -22,7 +22,9 @@ const Lists: React.VFC<ListsProps> = ({ title, slug, date, tags }) => {
                 <h4 className="post-date text">: {date}</h4>
                 <div className="tag-wrapper">
                     {tags?.map(tag => (
-                        <Tag key={tag}>{tag}</Tag>
+                        <Link key={tag} className="link-posts" to={`/tags?tag=${tag}`}>
+                            <Tag>{tag}</Tag>
+                        </Link>
                     ))}
                 </div>
             </div>
