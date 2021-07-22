@@ -5,7 +5,7 @@ import React from 'react';
 const Home = () => {
   return (
     <Anchor to={'/'}>
-      <PharaGraph>HOME</PharaGraph>
+      <PharaGraph fontSize={1}>HOME</PharaGraph>
     </Anchor>
   );
 };
