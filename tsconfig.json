@@ -13,7 +13,8 @@
       "components/*": ["./components/*"],
       "utils/*": ["./utils/*"],
       "hooks/*": ["./hooks/*"],
-      "template/*": ["./template/*"]
+      "template/*": ["./template/*"],
+      "provider/*": ["./provider/*"]
     },
     "esModuleInterop": true,
     "skipLibCheck": true,
