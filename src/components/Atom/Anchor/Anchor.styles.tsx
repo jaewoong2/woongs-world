@@ -1,12 +1,13 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
+import { defaultTheme } from 'type';
 
-export const A = styled(Link)`
+export const A = styled(Link)<defaultTheme>`
   text-decoration: none;
-  color: black;
+  color: ${({ theme }) => theme.color.black};
   cursor: pointer;
 
   .active {
-    color: red;
+    color: ${({ theme }) => theme.color.representativeColor};
   }
 `;
