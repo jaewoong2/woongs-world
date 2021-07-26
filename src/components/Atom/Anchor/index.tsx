@@ -1,8 +1,6 @@
 import React from 'react';
-import { A } from 'components/Atom/Anchor/Anchor.styles';
-import { GatsbyLinkProps } from 'gatsby';
-import { useTheme } from '@emotion/react';
-import { defaultTheme } from 'type';
+import { Wrapper } from 'components/Atom/Anchor/Anchor.styles';
+import { GatsbyLinkProps, Link } from 'gatsby';
 
 interface AnchorProps extends GatsbyLinkProps<unknown> {}
 
@@ -13,12 +11,12 @@ const Anchor: React.FC<AnchorProps> = ({
   children,
   activeClassName = 'active',
 }) => {
-  const { theme } = useTheme() as defaultTheme;
-
   return (
-    <A theme={theme} to={to} key={key} activeClassName={activeClassName}>
-      {children}
-    </A>
+    <Wrapper key={key}>
+      <Link className={'link'} activeClassName={activeClassName} to={to}>
+        {children}
+      </Link>
+    </Wrapper>
   );
 };
 

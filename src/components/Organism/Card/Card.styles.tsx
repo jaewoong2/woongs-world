@@ -11,7 +11,7 @@ export const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2.2px solid black;
+    border: 2.2px solid ${({ theme }) => theme.color.border};
     border-radius: 7px;
     @media screen and (max-width: 1050px) and (min-width: 450px) {
       flex-direction: row;

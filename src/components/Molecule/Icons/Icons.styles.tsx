@@ -18,7 +18,8 @@ export const Wrapper = styled.div`
     align-items: center;
     justify-content: space-evenly;
     text-decoration: none;
-    /* color:  */
+    color: ${({ theme }) => theme.color.primary};
+
     .icon-pharagraph {
       margin: 0;
       padding: 0;
@@ -36,7 +37,7 @@ export const Wrapper = styled.div`
       }
     }
     svg {
-      /* color: ; */
+      color: ${({ theme }) => theme.color.primary} !important;
       min-width: 15px;
       min-height: 15px;
       max-width: 20px;
