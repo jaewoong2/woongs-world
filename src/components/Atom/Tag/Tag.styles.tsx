@@ -7,8 +7,8 @@ export const Code = styled.code`
   padding: 4px 6px 4px 6px;
   cursor: pointer;
   overflow: hidden;
-  /* background-color: */
+  background-color: ${({ theme }) => theme.color.tag};
   margin-right: 2px;
-  /* color: */
+  color: ${({ theme }) => theme.color.main};
   margin-left: 3px;
 `;

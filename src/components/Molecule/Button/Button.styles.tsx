@@ -17,6 +17,8 @@ export const ButtonWrapper = styled.div`
     }
     &:hover {
       path {
+        fill: ${({ theme }) =>
+          theme.isDarkMode === true && theme.origin.color.yellow};
         fill-opacity: 1;
         transition: fill-opacity 0.6s;
       }

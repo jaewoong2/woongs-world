@@ -9,9 +9,15 @@ import { ButtonWrapper, Wrapper } from './Header.styles';
 
 interface HeaderProps {
   headerItems: string[];
+  onClickToggle: () => void;
+  isDarkMode: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ headerItems }) => {
+const Header: React.FC<HeaderProps> = ({
+  headerItems,
+  onClickToggle,
+  isDarkMode,
+}) => {
   return (
     <Wrapper>
       <Anchor to={'/'}>
@@ -20,16 +26,10 @@ const Header: React.FC<HeaderProps> = ({ headerItems }) => {
       <ButtonWrapper>
         <HeaderItems headerItems={headerItems} />
         <Button>
-          {false ? (
-            <IoMoonOutline
-              className="icon-svg"
-              // onClick={() => setIsDarkMode(!isDarkMode)}
-            />
+          {!isDarkMode ? (
+            <IoMoonOutline className="icon-svg" onClick={onClickToggle} />
           ) : (
-            <RiSunLine
-              className="icon-svg"
-              // onClick={() => setIsDarkMode(!isDarkMode)}
-            />
+            <RiSunLine className="icon-svg" onClick={onClickToggle} />
           )}
         </Button>
       </ButtonWrapper>

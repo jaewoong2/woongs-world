@@ -1,44 +1,66 @@
 import React, { useContext, useMemo } from 'react';
 import { ThemeProvider as Provider } from '@emotion/react';
 import DarkThemeContext from './DarkThemeProvider/DarkThemeContext';
-import { defaultTheme } from '../type';
 
 const color = {
-  white: 'rgb(250, 250, 250)',
-  black: 'rgb(30, 31, 33, 0.94)',
-  yellow: 'rgb(253, 216, 4)',
-  purple: 'rgba(107, 82, 248, 1)',
-  whiteDarker: 'rgba(233, 233, 233, 0.96)',
+  white: '#fafafa',
+  black: '#1e1f21ef',
+  yellow: '#fdd804',
+  purple: '#6b52f8',
+  lightDark: '#e9e9e9f4',
+  sky: '#cad6f0c6',
+  navy: '#0d225084',
 };
 
 const ThemeProvider: React.FC = ({ children }) => {
   const { isDarkMode } = useContext(DarkThemeContext);
 
-  const theme: defaultTheme = useMemo(
-    () => ({
-      isDarkMode,
-      color: {
-        ...color,
-        representativeColor: isDarkMode ? color.yellow : color.purple,
-        linkColor: isDarkMode ? 'rgba(54, 54, 54, 0.93)' : color.whiteDarker,
-        tagColor: isDarkMode
-          ? 'rgba(202, 214, 240, 0.78)'
-          : 'rgba(13, 34, 80, 0.52)',
-        hoverColor: isDarkMode
-          ? 'rgba(200, 200, 200, 0.79)'
-          : 'rgba(40, 40, 40, 0.55)',
-        primary: isDarkMode ? color.black : color.white,
-        dark: isDarkMode ? color.white : color.black,
-        icon: isDarkMode ? color.yellow : color.black,
-        border: !isDarkMode ? 'rgb(53, 54, 56)' : 'rgb(228, 231, 232)',
-        boxShadow: isDarkMode
-          ? ' rgba(0, 1, 3, 0.07)'
-          : 'rgba(240, 240, 240, 0.04)',
-        hoverBackground: isDarkMode
-          ? 'rgba(51, 52, 54, 0.918)'
-          : 'rgba(228, 231, 232, 0.6)',
-      },
-    }),
+  const lightTheme = {
+    color: {
+      /** representative Color*/
+      primary: color.yellow,
+      /** dark => dark, light => light */
+      main: color.black,
+      /** dark => light, light => dark */
+      sub: color.white,
+      border: '#e4e7e8',
+      boxShadow: '#f0f0f0a',
+      hoverBg: '#e4e7e899',
+      hover: '#2828288c',
+      tag: color.navy,
+      link: color.lightDark,
+      icon: color.yellow,
+    },
+    isDarkMode,
+    origin: {
+      color: color,
+    },
+  };
+
+  const darkTheme = {
+    color: {
+      /** representative Color*/
+      primary: color.purple,
+      /** dark => dark, light => light */
+      main: color.white,
+      /** dark => light, light => dark */
+      sub: color.black,
+      border: '#353638',
+      boxShadow: '#00010311',
+      hover: '#c8c8c8c9',
+      hoverBg: '#333436ea',
+      tag: color.sky,
+      link: '#363636ed',
+      icon: color.black,
+    },
+    isDarkMode,
+    origin: {
+      color: color,
+    },
+  };
+
+  const theme = useMemo(
+    () => (isDarkMode ? darkTheme : lightTheme),
     [isDarkMode],
   );
 
