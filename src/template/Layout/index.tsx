@@ -4,6 +4,12 @@ import DarkThemeContext from 'provider/DarkThemeProvider/DarkThemeContext';
 import React from 'react';
 import { useContext } from 'react';
 import { useCallback } from 'react';
+import {
+  MainSectionContainer,
+  Section,
+  SideSection,
+  Wrapper,
+} from './Layout.styles';
 
 const Layout: React.FC = ({ children }) => {
   const { setIsDarkMode, isDarkMode } = useContext(DarkThemeContext);
@@ -12,18 +18,19 @@ const Layout: React.FC = ({ children }) => {
   }, [isDarkMode]);
 
   return (
-    <main style={{ display: 'flex' }}>
-      <div style={{ width: `16%` }}>
-        <Card />
-      </div>
-      <div style={{ width: '67%' }}>
+    <Wrapper>
+      <MainSectionContainer>
         <Header
           isDarkMode={isDarkMode}
           onClickToggle={onClickToggle}
           headerItems={['til', 'dev', 'algorithm', 'about']}
         />
-      </div>
-    </main>
+        <SideSection>
+          <Card />
+        </SideSection>
+        <Section>{children}</Section>
+      </MainSectionContainer>
+    </Wrapper>
   );
 };
 

@@ -15,6 +15,7 @@ const Global = () => {
   const styles = useMemo(() => {
     return css`
       * {
+        font-size: 18px;
         margin: 0;
         box-sizing: inherit;
         padding: 0;
@@ -32,6 +33,9 @@ const Global = () => {
         text-decoration: none;
       }
       html {
+        box-sizing: border-box;
+        -webkit-text-size-adjust: 100%;
+        overflow-y: scroll;
         transition: background-color 0.35s linear, color 0.35s linear;
         background-color: ${theme.color.main};
         @media screen and (max-width: 450px) {

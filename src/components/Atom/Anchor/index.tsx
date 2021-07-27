@@ -1,19 +1,26 @@
 import React from 'react';
 import { Wrapper } from 'components/Atom/Anchor/Anchor.styles';
-import { GatsbyLinkProps, Link } from 'gatsby';
+import { Link } from 'gatsby';
 
-interface AnchorProps extends GatsbyLinkProps<unknown> {}
+interface AnchorProps {
+  to: string;
+  activeClassName?: string;
+}
 
 /** Link Component */
 const Anchor: React.FC<AnchorProps> = ({
   to,
-  key,
   children,
   activeClassName = 'active',
 }) => {
   return (
-    <Wrapper key={key}>
-      <Link className={'link'} activeClassName={activeClassName} to={to}>
+    <Wrapper key={to}>
+      <Link
+        key={to}
+        className={'link'}
+        activeClassName={activeClassName}
+        to={to}
+      >
         {children}
       </Link>
     </Wrapper>

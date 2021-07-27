@@ -11,13 +11,13 @@ const HeaderItems: React.FC<HeaderItemsProps> = ({ headerItems }) => {
   return (
     <Wrapper>
       {headerItems.map((item, idx) => (
-        <Anchor
-          activeClassName="active"
-          key={item + `${idx}`}
-          to={'/' + item + '/'}
-        >
-          <PharaGraph className={'header-pharagraph'} fontSize={'1.4em'}>
-            {item.toUpperCase()}
+        <Anchor to={'/' + item + '/'}>
+          <PharaGraph
+            key={item + `${idx}`}
+            className={'header-pharagraph'}
+            fontSize={'1.4em'}
+          >
+            {item[0].toUpperCase() + item.slice(1)}
           </PharaGraph>
         </Anchor>
       ))}

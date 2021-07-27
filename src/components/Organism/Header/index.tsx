@@ -20,19 +20,23 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   return (
     <Wrapper>
-      <Anchor to={'/'}>
-        <PharaGraph fontSize={'1.4em'}>HOME</PharaGraph>
-      </Anchor>
-      <ButtonWrapper>
-        <HeaderItems headerItems={headerItems} />
-        <Button>
-          {!isDarkMode ? (
-            <IoMoonOutline className="icon-svg" onClick={onClickToggle} />
-          ) : (
-            <RiSunLine className="icon-svg" onClick={onClickToggle} />
-          )}
-        </Button>
-      </ButtonWrapper>
+      <div className="wrapper">
+        <Anchor key="home" to={'/'}>
+          <PharaGraph className="home" fontSize={'1.4em'}>
+            HOME
+          </PharaGraph>
+        </Anchor>
+        <ButtonWrapper>
+          <HeaderItems headerItems={headerItems} />
+          <Button>
+            {isDarkMode ? (
+              <IoMoonOutline className="icon-svg" onClick={onClickToggle} />
+            ) : (
+              <RiSunLine className="icon-svg" onClick={onClickToggle} />
+            )}
+          </Button>
+        </ButtonWrapper>
+      </div>
     </Wrapper>
   );
 };
