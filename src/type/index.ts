@@ -1,3 +1,5 @@
+import { PageProps } from 'gatsby';
+
 type Color = {
     /** representative Color*/
     primary: string;
@@ -29,4 +31,31 @@ export type defaultTheme = {
             navy: string;
         }
     }
+}
+
+export type MarkDownData = {
+    data: {
+        allMarkdownRemark: AllMarkDownRemark;
+    };
+}
+
+export type AllMarkDownRemark = {
+    totalCount: number | string;
+    edges: { node: NodeType }[];
+}
+
+type NodeType = {
+    id: string;
+    frontmatter: FrontMatterType;
+    fields: {
+        slug: string;
+    };
+    excerpt: string;
+};
+
+type FrontMatterType = {
+    title: string;
+    date: string;
+    tags?: string[];
+    description?: '';
 }

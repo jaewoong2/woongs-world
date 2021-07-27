@@ -16,7 +16,7 @@ export const MainSectionContainer = styled.section`
   }
 `;
 
-export const Section = styled.section`
+export const SectionWrapper = styled.section`
   width: 100%;
   margin-top: 20px;
   display: flex;
@@ -25,6 +25,13 @@ export const Section = styled.section`
     width: 100%;
     flex-direction: column;
   }
+`;
+
+export const Section = styled.div`
+  width: 100%;
+  border: 2.3px solid ${({ theme }) => theme.color.border};
+  border-radius: 8px;
+  min-height: 300px;
 `;
 
 export const SideSection = styled.section`

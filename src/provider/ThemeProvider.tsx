@@ -2,7 +2,6 @@ import React, { useContext, useMemo } from 'react';
 import { ThemeProvider as Provider } from '@emotion/react';
 import DarkThemeContext from './DarkThemeProvider/DarkThemeContext';
 import { color, darkTheme, lightTheme } from '../repo';
-import { useEffect } from 'react';
 
 const ThemeProvider: React.FC = ({ children }) => {
   const { isDarkMode } = useContext(DarkThemeContext);

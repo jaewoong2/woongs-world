@@ -30,7 +30,6 @@ export const Wrapper = styled.div`
     }
 
     @media screen and (max-width: 1050px) and (min-width: 450px) {
-      font-size: 0.85em;
       justify-content: center;
       flex-direction: row;
       .icon-wrapper {
@@ -38,6 +37,7 @@ export const Wrapper = styled.div`
       }
       .icon-pharagraph {
         display: block;
+        font-size: 0.85em;
       }
     }
 
