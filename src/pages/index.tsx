@@ -11,7 +11,7 @@ import {
 import PostLists from 'components/Organism/PostLists';
 
 interface IndexProps extends PageProps {
-  data: MarkDownData['data'];
+  data: MarkDownData;
 }
 
 const Index: React.FC<IndexProps> = ({ data }) => {

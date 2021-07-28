@@ -1,5 +1,3 @@
-import { PageProps } from 'gatsby';
-
 type Color = {
     /** representative Color*/
     primary: string;
@@ -34,9 +32,7 @@ export type defaultTheme = {
 }
 
 export type MarkDownData = {
-    data: {
-        allMarkdownRemark: AllMarkDownRemark;
-    };
+    allMarkdownRemark: AllMarkDownRemark;
 }
 
 export type AllMarkDownRemark = {
