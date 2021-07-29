@@ -1,37 +1,40 @@
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.section`
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   padding-left: 40px;
   padding-right: 40px;
-  display: flex;
-  flex-direction: column;
 `;
 
 export const Title = styled.div`
-  padding-bottom: 10px;
   position: relative;
+  padding-bottom: 10px;
   margin-bottom: 30px;
-  content: '';
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 100%;
-  margin-bottom: 20px;
-  height: 2px;
-  border-radius: 8px;
-  background-color: ${({ theme }) => theme.color.border};
+  &::before {
+    content: '';
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-bottom: 20px;
+    height: 2px;
+    border-radius: 8px;
+    background-color: ${({ theme }) => theme.color.border};
+  }
 `;
 
 export const H1 = styled.h1`
+  font-size: 2.15rem;
   margin-bottom: 3px;
 `;
 
 export const Code = styled.code`
-  font-size: 0.75em;
+  font-size: 0.7em;
 `;
 
-export const MarkDownWrapper = styled.section`
+export const MarkDownWrapper = styled.div`
   font-size: 0.825em;
   color: ${({ theme }) => theme.color.sub};
   padding: 5px;
@@ -65,7 +68,7 @@ export const MarkDownWrapper = styled.section`
   pre {
     margin-top: 30px;
     margin-bottom: 30px;
-    background-color: ${({ theme }) => theme.color.primary};
+    background-color: ${({ theme }) => theme.color.sub};
   }
   blockquote {
     background-color: ${({ theme }) =>

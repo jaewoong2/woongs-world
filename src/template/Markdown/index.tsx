@@ -1,6 +1,6 @@
-import { useTheme } from '@emotion/react';
 import Tag from 'components/Atom/Tag';
-import { CreatePagesArgs, Link } from 'gatsby';
+import PostNavigator from 'components/Organism/PostNavigator';
+import { CreatePagesArgs, graphql, Link } from 'gatsby';
 import React from 'react';
 import Layout from 'template/Layout';
 import {
@@ -39,8 +39,8 @@ const MarkDown: React.FC<dataType> = ({ pageContext, data }) => {
   return (
     <Layout>
       <Wrapper>
-        <Title className="title text">
-          <H1 className="text">{post?.frontmatter.title}</H1>
+        <Title>
+          <H1>{post?.frontmatter.title}</H1>
           {post?.frontmatter?.tags?.map(tag => (
             <Link key={tag} to={`/tags?tag=${tag}`}>
               <Tag>{tag}</Tag>
@@ -52,18 +52,8 @@ const MarkDown: React.FC<dataType> = ({ pageContext, data }) => {
         />
       </Wrapper>
       <PostNavWrppaer>
-        {/* <PostNavigator
-          title={previousTitle}
-          slug={previous}
-          right={false}
-          left={true}
-        />
-        <PostNavigator
-          title={nextTitle}
-          slug={next}
-          right={true}
-          left={false}
-        /> */}
+        <PostNavigator title={previousTitle} slug={previous} left={true} />
+        <PostNavigator title={nextTitle} slug={next} left={false} />
       </PostNavWrppaer>
       <CommentWrppaer>
         {/* <Utterances
@@ -76,3 +66,18 @@ const MarkDown: React.FC<dataType> = ({ pageContext, data }) => {
 };
 
 export default MarkDown;
+
+export const query = graphql`
+  query ($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      fields {
+        slug
+      }
+      html
+      frontmatter {
+        title
+        tags
+      }
+    }
+  }
+`;

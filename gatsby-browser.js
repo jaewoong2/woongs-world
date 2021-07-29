@@ -2,6 +2,7 @@ import DarkThemeProvider from './src/provider/DarkThemeProvider/DarkThemeProvide
 import ThemeProvider from './src/provider/ThemeProvider.tsx';
 import ElementContainer from './src/utils/ElementContainer.tsx';
 import Global from './src/global/index.tsx';
+require('prismjs/themes/prism-solarizedlight.css');
 
 export const wrapRootElement = ({ element }) => (
   <DarkThemeProvider>
