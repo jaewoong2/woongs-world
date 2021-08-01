@@ -19,6 +19,7 @@ export const Container = styled.div`
     display: initial;
     margin-bottom: 11px;
     color: ${({ theme }) => theme.color.sub};
+    font-size: 1.35824rem;
 
     &:hover {
       opacity: 0.65;
@@ -38,13 +39,14 @@ export const Container = styled.div`
     font-size: 0.75em;
     margin: 0;
     padding: 0;
-    margin-left: 15px;
-    margin-bottom: 10px;
     color: ${({ theme }) => theme.color.sub};
+    margin-left: 15px;
+    margin-bottom: 5px;
   }
 `;
 
 export const Title = styled.h1`
   display: inline-block;
   border-bottom: 1px solid;
+  margin: 0;
 `;

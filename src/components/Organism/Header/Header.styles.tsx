@@ -4,6 +4,7 @@ export const Wrapper = styled.nav`
   width: 100%;
   border-bottom: 2.3px solid;
   padding-right: 30px;
+  display: flex;
 
   .wrapper {
     width: 100%;

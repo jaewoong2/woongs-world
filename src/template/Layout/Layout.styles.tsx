@@ -5,12 +5,13 @@ export const Wrapper = styled.main`
   display: flex;
   justify-content: center;
   position: relative;
-  padding: 3px;
+  padding: 5px;
 `;
 
 export const MainSectionContainer = styled.section`
   margin-top: 10px;
   width: 67%;
+
   @media screen and (max-width: 1050px) {
     width: 100%;
   }

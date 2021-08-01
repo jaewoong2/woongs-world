@@ -3,6 +3,7 @@ import PostNavigator from 'components/Organism/PostNavigator';
 import { CreatePagesArgs, graphql, Link } from 'gatsby';
 import React from 'react';
 import Layout from 'template/Layout';
+import { MarkDownProps } from 'type';
 import {
   CommentWrppaer,
   H1,
@@ -12,28 +13,10 @@ import {
   Wrapper,
 } from './MarkDown.styles';
 
-type makrDownRemarkType = {
-  fileds: {
-    slug: string;
-  };
-  html: string;
-  frontmatter: { title: string; tags: string[]; description: string };
-};
-
-interface dataType extends CreatePagesArgs {
-  pageContext: {
-    next: string;
-    previous: string;
-    slug: string;
-    nextTitle: string;
-    previousTitle: string;
-  };
-  data: {
-    markdownRemark: makrDownRemarkType;
-  };
-}
-
-const MarkDown: React.FC<dataType> = ({ pageContext, data }) => {
+const MarkDown: React.FC<MarkDownProps & CreatePagesArgs> = ({
+  pageContext,
+  data,
+}) => {
   const post = data.markdownRemark;
   const { next, previous, nextTitle, previousTitle } = pageContext;
   return (

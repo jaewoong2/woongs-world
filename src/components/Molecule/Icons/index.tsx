@@ -12,7 +12,7 @@ const Icons = () => {
           href="https://github.com/jaewoong2"
           target="_blank"
         >
-          <FiGithub className="icon" size="36px" />
+          <FiGithub className="icon" size="34px" />
           <p className="icon-pharagraph">https://github.com/jaewoong2</p>
         </a>
       </span>
@@ -23,7 +23,7 @@ const Icons = () => {
           href="https://velog.io/@jwisgenius"
           target="_blank"
         >
-          <BsFilePost className="icon" size="36px" />
+          <BsFilePost className="icon" size="34px" />
           <p className="icon-pharagraph">https://velog.io/@jwisgenius</p>
         </a>
       </span>

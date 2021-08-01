@@ -5,9 +5,8 @@ export const Wrapper = styled.div`
     text-decoration: none;
     color: ${({ theme }) => theme.color.sub};
     cursor: pointer;
-
-    .active {
-      color: ${({ theme }) => theme.color.primary};
-    }
+  }
+  .active {
+    color: ${({ theme }) => theme.color.primary};
   }
 `;

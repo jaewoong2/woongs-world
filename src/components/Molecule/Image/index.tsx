@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import React from 'react';
 import { ImageWrapper } from './Image.styles';
 
@@ -9,7 +10,9 @@ interface ImageProps {
 const Image: React.FC<ImageProps> = ({ src, alt }) => {
   return (
     <ImageWrapper>
-      <img src={src} alt={alt} />
+      <Link to={'/about'}>
+        <img src={src} alt={alt} />
+      </Link>
     </ImageWrapper>
   );
 };

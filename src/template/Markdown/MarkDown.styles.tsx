@@ -12,6 +12,7 @@ export const Title = styled.div`
   position: relative;
   padding-bottom: 10px;
   margin-bottom: 30px;
+  color: ${({ theme }) => theme.color.sub};
   &::before {
     content: '';
     width: 100%;
@@ -68,7 +69,11 @@ export const MarkDownWrapper = styled.div`
   pre {
     margin-top: 30px;
     margin-bottom: 30px;
-    background-color: ${({ theme }) => theme.color.sub};
+    background-color: ${({ theme }) => theme.color.main};
+
+    * {
+      font-size: 0.9em;
+    }
   }
   blockquote {
     background-color: ${({ theme }) =>

@@ -14,6 +14,7 @@ export const LinkLeftWrapper = styled.div`
     margin-left: 10px;
     font-size: 0.85em;
     padding: 4px;
+    color: ${({ theme }) => theme.color.sub};
   }
 
   @media screen and (max-width: 450px) {
@@ -26,6 +27,7 @@ export const PlaceHolder = styled.span`
   text-decoration: underline;
   font-size: 0.85em;
   margin-left: 10px;
+  color: ${({ theme }) => theme.color.sub};
 `;
 
 export const Null = styled.a`
@@ -49,6 +51,7 @@ export const LinkRightWrapper = styled.div`
     margin-right: 10px;
     font-size: 0.85em;
     padding: 4px;
+    color: ${({ theme }) => theme.color.sub};
   }
 
   @media screen and (max-width: 450px) {

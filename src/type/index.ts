@@ -55,3 +55,25 @@ type FrontMatterType = {
     tags?: string[];
     description?: '';
 }
+
+/** MarkDown Template GraphQL Data */
+type MarkDownRemark = {
+    fileds: {
+        slug: string;
+    };
+    html: string;
+    frontmatter: { title: string; tags: string[]; description: string };
+};
+
+export type MarkDownProps = {
+    pageContext: {
+        next: string;
+        previous: string;
+        slug: string;
+        nextTitle: string;
+        previousTitle: string;
+    };
+    data: {
+        markdownRemark: MarkDownRemark;
+    };
+}

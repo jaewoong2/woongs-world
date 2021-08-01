@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
 
   p {
     color: ${({ theme }) => theme.color.sub};
-    font-size: 0.87em;
+    font-size: 0.95em;
     margin: 0px 0px 0px 20%;
     padding: 0px 0px 9px 0;
 

@@ -15,12 +15,12 @@ const Global = () => {
   const styles = useMemo(() => {
     return css`
       * {
-        font-size: 18px;
-        margin: 0;
         box-sizing: inherit;
-        padding: 0;
         font-family: 'Roboto', 'Noto Sans KR', sans-serif;
         border-color: ${theme.color.border} !important;
+        margin: 0;
+        padding: 0;
+        font-size: 15px;
       }
       h1,
       h2,
@@ -31,6 +31,7 @@ const Global = () => {
       }
       a {
         text-decoration: none;
+        color: ${theme.color.sub};
       }
       html {
         box-sizing: border-box;
